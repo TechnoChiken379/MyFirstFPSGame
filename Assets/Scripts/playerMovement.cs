@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
+
+
+    public CharacterController characterController;
+
     // Start is called before the first frame update
     void Start()
     {
