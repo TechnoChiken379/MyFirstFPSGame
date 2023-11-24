@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCharacter: {fileID: 1819811736}
-  speed: 500
+  speed: 175
 --- !u!1 &987132996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1242,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1314896168}
-  - component: {fileID: 1314896169}
   m_Layer: 6
   m_Name: Enemys
   m_TagString: Untagged
@@ -1266,19 +1265,6 @@ Transform:
   - {fileID: 1983368580}
   m_Father: {fileID: 903431308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1314896169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314896167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc67cea24a34f8544a6eaddae80ac90f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
 --- !u!1 &1336744814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,7 +1326,7 @@ Transform:
   m_GameObject: {fileID: 1663254349}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.014, z: 0}
   m_LocalScale: {x: 100, y: 0.1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1699,7 +1685,7 @@ GameObject:
   - component: {fileID: 1983368578}
   - component: {fileID: 1983368577}
   - component: {fileID: 1983368581}
-  - component: {fileID: 1983368582}
+  - component: {fileID: 1983368583}
   m_Layer: 6
   m_Name: Capsule
   m_TagString: NPC
@@ -1805,7 +1791,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 33.89
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1817,7 +1803,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1983368582
+--- !u!114 &1983368583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1829,7 +1815,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc67cea24a34f8544a6eaddae80ac90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 1983368581}
+  squareOffMovement: 20
+  closeEnough: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
