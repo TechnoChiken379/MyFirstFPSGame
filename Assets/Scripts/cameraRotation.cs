@@ -8,7 +8,7 @@ public class cameraRotation : MonoBehaviour
     private float xMouse;
     private float yMouse;
     private float xRotations;
-    public float speed = 175f;
+    public float speed = 300f;
 
     // Start is called before the first frame update
     void Start()

@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
 
     public NavMeshAgent agent;
