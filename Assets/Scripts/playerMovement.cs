@@ -1,62 +1,93 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 
 public class playerMovement : MonoBehaviour
 {
-    private float currentSpeed;
-    public float walkingSpeed = 10f;
-    public float runningSpeed = 15;
+    #region variables
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float walkSpeed = 7f;
+    [SerializeField] private float runSpeed = 10f;
 
-    private float gravity = -0.5f;
-    public float jumpSpeed = 0.8f;
+    private Vector3 moveDirection;
+    private Vector3 moveDirection2;
+    private Vector3 moveDirectionX;
+    private Vector3 moveDirectionZ;
+    private Vector3 velocity;
+    private float gravity = -9.81f;
+    private float jumpheight = 4f;
+
+    private CharacterController characterController;
+
     private float baseLineGravity;
-
-    private float moveX;
-    private float moveZ;
+    private float xMove;
+    private float zMove;
     private Vector3 move;
+    #endregion
 
-    public CharacterController characterController;
-    private Rigidbody rb;
-
-    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        currentSpeed = walkingSpeed;
-        baseLineGravity = gravity;
+        characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        moveX = Input.GetAxis("Horizontal") * currentSpeed * Time.deltaTime;
-        moveZ = Input.GetAxis("Vertical") * currentSpeed * Time.deltaTime;
-
-        move = transform.right * moveX +
-                transform.up*gravity +
-                transform.forward*moveZ;
-        characterController.Move(move);
-
-        if (Input.GetKey(KeyCode.LeftShift))
+        Move();
+    }
+    private void Move()
+    {
+        if (characterController.isGrounded && velocity.y < 0)
         {
-            currentSpeed = runningSpeed;
+            velocity.y = -2f;
         }
-        else
+        float MoveZ = Input.GetAxis("Vertical");
+        float MoveX = Input.GetAxis("Horizontal");
+
+        moveDirectionZ = new Vector3(0, 0, MoveZ);
+        moveDirectionX = new Vector3(MoveX, 0, 0);
+        moveDirection = transform.TransformDirection(moveDirectionX + moveDirectionZ);
+        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) //walk
         {
-            currentSpeed = walkingSpeed;
+            Walk();
+        }
+        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift)) //run
+        {
+            Run();
         }
 
-        if (characterController.isGrounded == true && Input.GetButtonDown("Jump"))
+        if (characterController.isGrounded)
         {
-            gravity = baseLineGravity;
-            gravity *= -jumpSpeed;
+            if (Input.GetKey(KeyCode.Space)) // jump
+            {
+                jump();
+            }
+            if (moveDirection != Vector3.zero)// idle
+            {
+                idle();
+            }
         }
+        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
 
-        if (gravity > baseLineGravity)
-        {
-            gravity -= 2 * Time.deltaTime;
-        }
+        velocity.y += gravity * Time.deltaTime; // applies gravity
+        characterController.Move(velocity * Time.deltaTime);
+    }
+    private void Walk()
+    {
+        moveDirection *= walkSpeed;
+    }
+    private void Run()
+    {
+        moveDirection *= runSpeed;
+    }
+    private void jump()
+    {
+        velocity.y = Mathf.Sqrt(jumpheight * -2 * gravity);
+    }
+    private void idle()
+    {
+
     }
 }

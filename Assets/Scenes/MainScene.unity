@@ -1522,10 +1522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7ce2055fbf6594fa3ada7793270fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 10
-  runningSpeed: 15
-  jumpSpeed: 0.8
-  characterController: {fileID: 1819811740}
+  moveSpeed: 3
+  walkSpeed: 7
+  runSpeed: 10
 --- !u!143 &1819811740
 CharacterController:
   m_ObjectHideFlags: 0
