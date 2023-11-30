@@ -7,17 +7,21 @@ using UnityEditor.Experimental.GraphView;
 public class playerMovement : MonoBehaviour
 {
     #region variables
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float walkSpeed = 7f;
-    [SerializeField] private float runSpeed = 10f;
+    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float walkSpeed = 3f;
+    [SerializeField] private float runSpeed = 5f;
 
     private Vector3 moveDirection;
     private Vector3 moveDirection2;
     private Vector3 moveDirectionX;
     private Vector3 moveDirectionZ;
     private Vector3 velocity;
-    private float gravity = -9.81f;
-    private float jumpheight = 4f;
+    private float gravity = -30f;
+    private float jumpheight = 2f;
+    private float airSpeed = 0.78f;
+
+    private float jumpAmount;
+    private float jumpTimer = 0.5f;
 
     private CharacterController characterController;
 
@@ -29,64 +33,70 @@ public class playerMovement : MonoBehaviour
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>(); //Gets CharacterController
     }
 
 
     void Update()
     {
-        Move();
+        Move(); //Can Move
+        jumpTimer += Time.deltaTime; //JumpTimer is = Time.DeltaTime
     }
+
+
     private void Move()
     {
         if (characterController.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
-        float MoveZ = Input.GetAxis("Vertical");
-        float MoveX = Input.GetAxis("Horizontal");
+        float MoveZ = Input.GetAxis("Vertical"); //Input MoveDirection Axis Z
+        float MoveX = Input.GetAxis("Horizontal"); //Input MoveDirection Axis X
 
-        moveDirectionZ = new Vector3(0, 0, MoveZ);
-        moveDirectionX = new Vector3(MoveX, 0, 0);
-        moveDirection = transform.TransformDirection(moveDirectionX + moveDirectionZ);
-        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) //walk
+        moveDirectionZ = new Vector3(0, 0, MoveZ); //Axis Instellen In Vector3
+        moveDirectionX = new Vector3(MoveX, 0, 0); //Axis Instellen In Vector3
+        moveDirection = transform.TransformDirection(moveDirectionX + moveDirectionZ); //Transforms Move Directions
+
+        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) Walk(); //Walk Script If "LeftShift" Is Not Pressed
+        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift)) Run(); //Run Script On Input
+
+        if (Input.GetKey(KeyCode.Space) && jumpTimer >= 0.5 && jumpAmount > 0) //Double Jump Part Of The Script
         {
-            Walk();
-        }
-        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift)) //run
-        {
-            Run();
+            jump();
+            jumpAmount -= 1;
+            jumpTimer = 0f;
         }
 
-        if (characterController.isGrounded)
+        if (characterController.isGrounded) //When Player Is Within StepOffset = Character Is Grounded
         {
-            if (Input.GetKey(KeyCode.Space)) // jump
-            {
-                jump();
-            }
-            if (moveDirection != Vector3.zero)// idle
+            if (moveDirection != Vector3.zero)//Idle
             {
                 idle();
             }
+            jumpAmount = 1; //Resets The Amount Of Possible Jumps 
+        }
+        else
+        {
+            moveDirection *= airSpeed;
         }
         characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime; // applies gravity
         characterController.Move(velocity * Time.deltaTime);
     }
-    private void Walk()
+    private void Walk() //The Walk Script
     {
         moveDirection *= walkSpeed;
     }
-    private void Run()
+    private void Run() //The Run Script
     {
         moveDirection *= runSpeed;
     }
-    private void jump()
+    private void jump() //The Jump Script
     {
         velocity.y = Mathf.Sqrt(jumpheight * -2 * gravity);
     }
-    private void idle()
+    private void idle() //The Idle Script
     {
 
     }

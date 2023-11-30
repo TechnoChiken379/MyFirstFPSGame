@@ -1093,6 +1093,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCharacter: {fileID: 1819811736}
   speed: 300
+  defaultFOV: 90
+  cam: {fileID: 963194227}
 --- !u!1 &987132996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,9 +1524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7ce2055fbf6594fa3ada7793270fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  walkSpeed: 7
-  runSpeed: 10
+  moveSpeed: 2
+  walkSpeed: 3
+  runSpeed: 5
 --- !u!143 &1819811740
 CharacterController:
   m_ObjectHideFlags: 0

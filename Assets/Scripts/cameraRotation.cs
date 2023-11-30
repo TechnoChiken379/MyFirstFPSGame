@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class cameraRotation : MonoBehaviour
@@ -9,6 +10,9 @@ public class cameraRotation : MonoBehaviour
     private float yMouse;
     private float xRotations;
     public float speed = 300f;
+    
+    public float defaultFOV = 90;
+    public Camera cam;
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +29,8 @@ public class cameraRotation : MonoBehaviour
         xRotations = Mathf.Clamp(xRotations, -90f, 90f);
         transform.localRotation = Quaternion.Euler(xRotations, 0f, 0f);
         MainCharacter.Rotate(Vector3.up * xMouse);
+        
+        if (!Input.GetMouseButton(1)) cam.fieldOfView = (defaultFOV);
+        else cam.fieldOfView = (defaultFOV * 0.60f);
     }
 }
