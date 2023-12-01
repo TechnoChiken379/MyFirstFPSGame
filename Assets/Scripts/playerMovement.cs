@@ -10,8 +10,9 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float walkSpeed = 3f;
     [SerializeField] private float runSpeed = 5f;
+    [SerializeField] private float crawlSpeed = 1f;
 
-    private Vector3 moveDirection;
+    public Vector3 moveDirection;
     private Vector3 moveDirection2;
     private Vector3 moveDirectionX;
     private Vector3 moveDirectionZ;
@@ -29,20 +30,22 @@ public class playerMovement : MonoBehaviour
     private float xMove;
     private float zMove;
     private Vector3 move;
+
+    private GameObject Body;
+    private float scaleChange;
     #endregion
 
     void Start()
     {
         characterController = GetComponent<CharacterController>(); //Gets CharacterController
+        scaleChange = new Vector3(0, 5, 0);
     }
-
 
     void Update()
     {
         Move(); //Can Move
         jumpTimer += Time.deltaTime; //JumpTimer is = Time.DeltaTime
     }
-
 
     private void Move()
     {
@@ -57,12 +60,19 @@ public class playerMovement : MonoBehaviour
         moveDirectionX = new Vector3(MoveX, 0, 0); //Axis Instellen In Vector3
         moveDirection = transform.TransformDirection(moveDirectionX + moveDirectionZ); //Transforms Move Directions
 
-        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) Walk(); //Walk Script If "LeftShift" Is Not Pressed
-        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift)) Run(); //Run Script On Input
+        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) Walk(); //Walk If "LeftShift" Is Not Pressed
+        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift)) Run();//Run If "LeftShift" Is Pressed
+
+        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftControl)) Walk(); //Walk If "LeftControl" Is Not Pressed
+        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftControl)) //Crawl If "LeftControl" Is Pressed
+        {
+            Crawl();
+            Body.transform.localScale = scaleChange;
+        }
 
         if (Input.GetKey(KeyCode.Space) && jumpTimer >= 0.5 && jumpAmount > 0) //Double Jump Part Of The Script
         {
-            jump();
+            Jump();
             jumpAmount -= 1;
             jumpTimer = 0f;
         }
@@ -71,7 +81,7 @@ public class playerMovement : MonoBehaviour
         {
             if (moveDirection != Vector3.zero)//Idle
             {
-                idle();
+                Idle();
             }
             jumpAmount = 1; //Resets The Amount Of Possible Jumps 
         }
@@ -92,12 +102,16 @@ public class playerMovement : MonoBehaviour
     {
         moveDirection *= runSpeed;
     }
-    private void jump() //The Jump Script
+    private void Jump() //The Jump Script
     {
         velocity.y = Mathf.Sqrt(jumpheight * -2 * gravity);
     }
-    private void idle() //The Idle Script
+    private void Idle() //The Idle Script
     {
 
+    }
+    private void Crawl() //The Crawl Script
+    {
+        moveDirection *= crawlSpeed;
     }
 }
