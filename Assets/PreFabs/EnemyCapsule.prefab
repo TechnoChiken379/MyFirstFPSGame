@@ -159,7 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea7bea4bc36ff140ac11fe66aadb58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   attackRange: 10
   defaultMaterial: {fileID: 2100000, guid: c07f5b05999b4124796a5539737fba48, type: 2}
   attackedMaterial: {fileID: 2100000, guid: fd936cd92675814488f42506ab573012, type: 2}

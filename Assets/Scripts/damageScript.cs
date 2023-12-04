@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class damageScript : MonoBehaviour
 {
+    public GameObject enemy;
+    public static float damageAmount = 2.5f;
     void Start()
     {
         
@@ -16,10 +18,9 @@ public class damageScript : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<EnemyMovement>(out EnemyMovement  EnemyComponent))
+        if (collision.gameObject.TryGetComponent<EnemyMovement>(out EnemyMovement Enemy))
         {
-            Destroy(gameObject);
+            Enemy.DamageDealt(1);
         }
     }
-
 }

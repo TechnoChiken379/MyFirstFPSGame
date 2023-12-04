@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     private float zPosistion;
     private float yPosistion;
     public float closeEnough = 2f;
+    private float enemyHP = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,5 +46,15 @@ public class EnemyMovement : MonoBehaviour
         zPosistion = Random.Range(zMin, zMax);
 
         agent.SetDestination(new Vector3(xPosistion, yPosistion, zPosistion));
+    }
+
+    public void DamageDealt(float damageAmount)
+    {
+        enemyHP -= damageAmount;
+
+        if (enemyHP <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
