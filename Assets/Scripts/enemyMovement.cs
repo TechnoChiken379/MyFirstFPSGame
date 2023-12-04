@@ -17,8 +17,7 @@ public class EnemyMovement : MonoBehaviour
     private float zPosistion;
     private float yPosistion;
     public float closeEnough = 2f;
-    private float enemyHP = 10f;
-
+    public float enemyHP = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
         agent.SetDestination(new Vector3(xPosistion, yPosistion, zPosistion));
     }
 
-    public void DamageDealt(float damageAmount)
+    public void DamageDealt(float damageAmount = 2)
     {
         enemyHP -= damageAmount;
 

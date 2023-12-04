@@ -5,7 +5,6 @@ using UnityEngine;
 public class damageScript : MonoBehaviour
 {
     public GameObject enemy;
-    public static float damageAmount = 2.5f;
     void Start()
     {
         
@@ -21,6 +20,7 @@ public class damageScript : MonoBehaviour
         if (collision.gameObject.TryGetComponent<EnemyMovement>(out EnemyMovement Enemy))
         {
             Enemy.DamageDealt(1);
+            Destroy(gameObject);
         }
     }
 }

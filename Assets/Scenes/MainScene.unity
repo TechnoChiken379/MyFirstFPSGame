@@ -5194,7 +5194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3950419178529264420, guid: ec86f95443661164db5fc7bccd807916, type: 3}
   bulletSpawnPoint: {fileID: 1723438269}
-  fireSpeed: 35.8
+  fireSpeed: 25
   timer: 0
   canFire: 0.25
 --- !u!1 &1681994872

@@ -34,7 +34,7 @@ public class newShooting : MonoBehaviour
         {
             GameObject spawnedBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
             spawnedBullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.right * fireSpeed;
-            Destroy(spawnedBullet, 5);
+            Destroy(spawnedBullet, 2);
             timer = 0f;
         }
         if (Input.GetMouseButton(1))
