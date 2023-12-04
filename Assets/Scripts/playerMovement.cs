@@ -7,12 +7,14 @@ using UnityEditor.Experimental.GraphView;
 public class playerMovement : MonoBehaviour
 {
     #region variables
+    // Movement speeds for different states
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float walkSpeed = 3f;
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private float crawlSpeed = 1f;
 
-    public Vector3 moveDirection;
+    // Movement vectors and variables
+    private Vector3 moveDirection;
     private Vector3 moveDirection2;
     private Vector3 moveDirectionX;
     private Vector3 moveDirectionZ;
@@ -21,96 +23,129 @@ public class playerMovement : MonoBehaviour
     private float jumpheight = 2f;
     private float airSpeed = 0.78f;
 
+    // Jump-related variables
     private float jumpAmount;
     private float jumpTimer = 0.5f;
 
     private CharacterController characterController;
 
+    // Variables for baseline gravity and movement along X and Z axes
     private float baseLineGravity;
     private float xMove;
     private float zMove;
     private Vector3 move;
 
-    private GameObject Body;
-    private float scaleChange;
+    // Variables for handling player scale changes
+    private Vector3 ogScale;
+    private Vector3 normaleScale;
+    private Vector3 newScale = new Vector3(1, 0.5f, 1);
     #endregion
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>(); //Gets CharacterController
-        scaleChange = new Vector3(0, 5, 0);
+        // Initialization
+        characterController = GetComponent<CharacterController>(); // Gets CharacterController
+        ogScale = transform.localScale;
+        normaleScale = ogScale;
     }
 
     void Update()
     {
-        Move(); //Can Move
-        jumpTimer += Time.deltaTime; //JumpTimer is = Time.DeltaTime
+        Move(); // Handles player movement
+        jumpTimer += Time.deltaTime; // Updates jumpTimer
     }
 
     private void Move()
     {
+        // Handling gravity when the player is grounded
         if (characterController.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
-        float MoveZ = Input.GetAxis("Vertical"); //Input MoveDirection Axis Z
-        float MoveX = Input.GetAxis("Horizontal"); //Input MoveDirection Axis X
 
-        moveDirectionZ = new Vector3(0, 0, MoveZ); //Axis Instellen In Vector3
-        moveDirectionX = new Vector3(MoveX, 0, 0); //Axis Instellen In Vector3
-        moveDirection = transform.TransformDirection(moveDirectionX + moveDirectionZ); //Transforms Move Directions
+        // Getting input for movement along Z and X axes
+        float MoveZ = Input.GetAxis("Vertical"); // Input for MoveDirection along Axis Z
+        float MoveX = Input.GetAxis("Horizontal"); // Input for MoveDirection along Axis X
 
-        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) Walk(); //Walk If "LeftShift" Is Not Pressed
-        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift)) Run();//Run If "LeftShift" Is Pressed
+        // Creating vectors for movement along Z and X axes
+        moveDirectionZ = new Vector3(0, 0, MoveZ);
+        moveDirectionX = new Vector3(MoveX, 0, 0);
 
-        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftControl)) Walk(); //Walk If "LeftControl" Is Not Pressed
-        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftControl)) //Crawl If "LeftControl" Is Pressed
+        // Transforming move directions based on the player's orientation
+        moveDirection = transform.TransformDirection(moveDirectionX + moveDirectionZ);
+
+        // Handling walking, running, and crawling based on user input
+        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) Walk();
+        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift)) Run();
+
+        if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftControl))
         {
-            Crawl();
-            Body.transform.localScale = scaleChange;
+            Walk();
+        }
+        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftControl)) Crawl();
+
+        // Scaling the player based on whether LeftControl is pressed or not
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            ogScale = newScale;
+            transform.localScale = newScale;
+        }
+        else if (!Input.GetKey(KeyCode.LeftControl))
+        {
+            ogScale = normaleScale;
+            transform.localScale = normaleScale;
         }
 
-        if (Input.GetKey(KeyCode.Space) && jumpTimer >= 0.5 && jumpAmount > 0) //Double Jump Part Of The Script
+        // Handling double jump mechanics
+        if (Input.GetKey(KeyCode.Space) && jumpTimer >= 0.5 && jumpAmount > 0)
         {
             Jump();
             jumpAmount -= 1;
             jumpTimer = 0f;
         }
 
-        if (characterController.isGrounded) //When Player Is Within StepOffset = Character Is Grounded
+        // Handling movement and idle state when the player is grounded
+        if (characterController.isGrounded)
         {
-            if (moveDirection != Vector3.zero)//Idle
+            if (moveDirection != Vector3.zero)
             {
                 Idle();
             }
-            jumpAmount = 1; //Resets The Amount Of Possible Jumps 
+            jumpAmount = 1;
         }
         else
         {
             moveDirection *= airSpeed;
         }
-        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
 
-        velocity.y += gravity * Time.deltaTime; // applies gravity
+        // Moving the character controller and applying gravity
+        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
     }
-    private void Walk() //The Walk Script
+
+    // Movement methods for different states
+    private void Walk()
     {
         moveDirection *= walkSpeed;
     }
-    private void Run() //The Run Script
+
+    private void Run()
     {
         moveDirection *= runSpeed;
     }
-    private void Jump() //The Jump Script
+
+    private void Jump()
     {
         velocity.y = Mathf.Sqrt(jumpheight * -2 * gravity);
     }
-    private void Idle() //The Idle Script
-    {
 
+    private void Idle()
+    {
+        // Placeholder for idle state actions (if any)
     }
-    private void Crawl() //The Crawl Script
+
+    private void Crawl()
     {
         moveDirection *= crawlSpeed;
     }
