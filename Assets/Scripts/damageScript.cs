@@ -19,7 +19,7 @@ public class damageScript : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<EnemyMovement>(out EnemyMovement Enemy))
         {
-            Enemy.DamageDealt(1);
+            Enemy.DamageDealt();
             Destroy(gameObject);
         }
     }
