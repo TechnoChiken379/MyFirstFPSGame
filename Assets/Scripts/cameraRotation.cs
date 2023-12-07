@@ -11,18 +11,25 @@ public class cameraRotation : MonoBehaviour
     private float xRotations;
     public float speed = 300f;
     
-    public float defaultFOV = 90;
+    public float defaultFOV = 60;
     public Camera cam;
+
+    private Vector3 oGCamScale;
+    private Vector3 controlCamScale/* = new Vector3(1, 1, 1)*/;
 
     // Start is called before the first frame update
     void Start()
     {
+        oGCamScale = transform.localScale;
+        controlCamScale = oGCamScale;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.localScale = controlCamScale;
+
         xMouse = Input.GetAxis("Mouse X") * speed * Time.deltaTime;
         yMouse = Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
         xRotations -= yMouse;

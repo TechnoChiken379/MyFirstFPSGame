@@ -8,15 +8,17 @@ public class newShooting : MonoBehaviour
 {
     #region Vars
     public GameObject bullet;
+    public GameObject Pistol;
     public Transform bulletSpawnPoint;
-    public float fireSpeed = 12;
+    public float fireSpeed = 250;
 
     public float timer = 0f;
-    public float canFire = 0.25f;
+    public float canFire = 0.2f;
 
     private Vector3 offHandGunPosition;
     private Vector3 newGunPosition;
-    private Vector3 aimGunPosition = new Vector3(0, -0.129f, 0.641f);
+    private Vector3 aimGunPosition = new Vector3(0, -0.075f, 0.855f);
+    private Vector3 aimGunPositionOnDS = new Vector3(0, -0.150f, 0.855f);
     #endregion
     void Start() // Do this at start
     {
@@ -37,16 +39,29 @@ public class newShooting : MonoBehaviour
             Destroy(spawnedBullet, 2);
             timer = 0f;
         }
-        if (Input.GetMouseButton(1))
+
+        if (Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftControl))
         {
             newGunPosition = aimGunPosition;
             transform.localPosition = aimGunPosition;
         }
-        else if (!Input.GetMouseButton(1))
+
+        else if (!Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftControl))
         {
             newGunPosition = offHandGunPosition;
             transform.localPosition = offHandGunPosition;
         }
 
+        else if (Input.GetMouseButton(1) && Input.GetKey(KeyCode.LeftControl))
+        {
+            newGunPosition = aimGunPositionOnDS;
+            transform.localPosition = aimGunPositionOnDS;
+        }
+
+        else if (!Input.GetMouseButton(1) && Input.GetKey(KeyCode.LeftControl))
+        {
+            newGunPosition = offHandGunPosition;
+            transform.localPosition = offHandGunPosition;
+        }
     }
 }

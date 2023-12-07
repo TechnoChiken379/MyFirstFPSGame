@@ -16,8 +16,8 @@ public class EnemyMovement : MonoBehaviour
     private float xPosistion;
     private float zPosistion;
     private float yPosistion;
-    public float closeEnough = 2f;
-    public static float enemyHP = 10f;
+    public float closeEnough = 5f;
+    public static float enemyHP = 20f;
     private static float damageAmount = 10;
 
     // Start is called before the first frame update

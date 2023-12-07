@@ -8,10 +8,10 @@ public class playerMovement : MonoBehaviour
 {
     #region variables
     // Movement speeds for different states
-    [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float walkSpeed = 3f;
-    [SerializeField] private float runSpeed = 5f;
-    [SerializeField] private float crawlSpeed = 1f;
+    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float walkSpeed = 5f;
+    [SerializeField] private float runSpeed = 8f;
+    [SerializeField] private float crawlSpeed = 1.80f;
 
     // Movement vectors and variables
     private Vector3 moveDirection;
@@ -36,17 +36,29 @@ public class playerMovement : MonoBehaviour
     private Vector3 move;
 
     // Variables for handling player scale changes
-    private Vector3 ogScale;
-    private Vector3 normaleScale;
-    private Vector3 newScale = new Vector3(1, 0.5f, 1);
+    private float ogScale;
+    private float normaleScale;
+    private float newScale;
+
+    public int health = 100;
+
+
+    public PhysicMaterial slidingPhysicMaterial;
+    public PhysicMaterial defaultPhysicMaterial;
+
+    private Rigidbody rb;
+    public GameObject Body;
+    public GameObject MainCam;
+
     #endregion
 
     void Start()
     {
         // Initialization
         characterController = GetComponent<CharacterController>(); // Gets CharacterController
-        ogScale = transform.localScale;
+        ogScale = characterController.height;
         normaleScale = ogScale;
+        newScale = normaleScale / 2;
     }
 
     void Update()
@@ -81,19 +93,29 @@ public class playerMovement : MonoBehaviour
         if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftControl))
         {
             Walk();
+            //rb.freezeRotation = false;
+            GetComponent<Collider>().material = defaultPhysicMaterial;
         }
-        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftControl)) Crawl();
+        else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftControl))
+        {
+            Crawl();
+            GetComponent<Collider>().material = slidingPhysicMaterial;
+        }
 
         // Scaling the player based on whether LeftControl is pressed or not
         if (Input.GetKey(KeyCode.LeftControl))
         {
             ogScale = newScale;
-            transform.localScale = newScale;
+            characterController.height = newScale;
+            Body.transform.localScale = new Vector3(1, 0.5f, 1);
+            MainCam.transform.localPosition = new Vector3(0, 0.4f, 0);
         }
         else if (!Input.GetKey(KeyCode.LeftControl))
         {
             ogScale = normaleScale;
-            transform.localScale = normaleScale;
+            characterController.height = normaleScale;
+            Body.transform.localScale = new Vector3(1, 1, 1);
+            MainCam.transform.localPosition = new Vector3(0, 0.8f, 0);
         }
 
         // Handling double jump mechanics
@@ -124,6 +146,14 @@ public class playerMovement : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.rigidbody)
+        {
+            health -= 10;
+        }
+    }
+
     // Movement methods for different states
     private void Walk()
     {
@@ -145,8 +175,9 @@ public class playerMovement : MonoBehaviour
         // Placeholder for idle state actions (if any)
     }
 
-    private void Crawl()
+    public void Crawl()
     {
+        //rb.freezeRotation = true;
         moveDirection *= crawlSpeed;
     }
 }

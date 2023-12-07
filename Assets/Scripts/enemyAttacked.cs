@@ -36,7 +36,7 @@ public class enemyAttacked : MonoBehaviour
             rend.sharedMaterial = attackedMaterial;
             enemyMovement.agent.SetDestination(player.position);
             canMove = true;
-            navMeshAgent.speed = 5f;
+            navMeshAgent.speed = 7f;
         }
         else
         {
@@ -46,7 +46,7 @@ public class enemyAttacked : MonoBehaviour
                 enemyMovement.newLocation();
             }
             canMove = false;
-            navMeshAgent.speed = 3.5f;
+            navMeshAgent.speed = 4.5f;
         }
     }
 }
