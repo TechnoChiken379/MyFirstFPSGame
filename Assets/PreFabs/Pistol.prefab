@@ -2954,9 +2954,9 @@ MonoBehaviour:
   bullet: {fileID: 3950419178529264420, guid: ec86f95443661164db5fc7bccd807916, type: 3}
   Pistol: {fileID: 6369061208154753008}
   bulletSpawnPoint: {fileID: 4968332668084875289}
-  fireSpeed: 250
+  fireSpeed: 200
   timer: 0
-  canFire: 0.2
+  canFire: 0.3
 --- !u!1 &6381310655226242155
 GameObject:
   m_ObjectHideFlags: 0

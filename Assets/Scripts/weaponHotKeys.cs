@@ -57,29 +57,4 @@ public class weaponHotKeys : MonoBehaviour
         }
 
     }
-
-    //public void GetPistol()
-    //{
-    //    //Vector3 spawnPosition = new Vector3(0.651f, -0.276f, 1.281f);
-    //    //Quaternion spawnRotation = Quaternion.identity;
-    //    //GameObject instantiatedPrefab = Instantiate(PistolPrefab/*, spawnPosition, spawnRotation*/);
-    //}
-    //public void GetAK()
-    //{
-    //    Vector3 spawnPosition = new Vector3(0, 0, 0);
-    //    Quaternion spawnRotation = Quaternion.identity;
-    //    //GameObject instantiatedPrefab = Instantiate(AKPrefab, spawnPosition, spawnRotation);
-    //}
-    ////public void GetSniper()
-    ////{
-    ////    Vector3 spawnPosition = new Vector3(0, 0, 0);
-    ////    Quaternion spawnRotation = Quaternion.identity;
-    ////    GameObject instantiatedPrefab = Instantiate(SniperPrefab, spawnPosition, spawnRotation);
-    ////}
-    ////public void GetGumGun()
-    ////{
-    ////    Vector3 spawnPosition = new Vector3(0, 0, 0);
-    ////    Quaternion spawnRotation = Quaternion.identity;
-    ////    GameObject instantiatedPrefab = Instantiate(GumGunPrefab, spawnPosition, spawnRotation);
-    ////}
 }
