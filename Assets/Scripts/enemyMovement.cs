@@ -19,14 +19,18 @@ public class EnemyMovement : MonoBehaviour
     public static float enemyHP = 20f;
     private static float damageAmount = 10;
 
+    private GameObject Body;
+    private float range = 5;
     // Start is called before the first frame update
     void Start()
     {
+        Body = GameObject.Find("Body");
         xMax = -squareOffMovement;
         xMin = squareOffMovement;
         zMax = -squareOffMovement;
         zMin = squareOffMovement;
 
+        playerRange();
         newLocation();
     }
 
@@ -54,6 +58,14 @@ public class EnemyMovement : MonoBehaviour
         if (enemyHP <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void playerRange()
+    {
+        if (Vector3.Distance(transform.position, Body.transform.position) <= range)
+        {
+
         }
     }
 }

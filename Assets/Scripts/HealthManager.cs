@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,10 @@ public class HealthManager : MonoBehaviour
     }
 
     private void Update()
+    {
+    }
+
+    private void LateUpdate()
     {
         Health.text = healthPoints.ToString() + "HP";
     }

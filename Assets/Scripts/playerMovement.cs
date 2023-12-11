@@ -164,7 +164,9 @@ public class playerMovement : MonoBehaviour
             Debug.Log("DEBUG HEALTH");
             healthPointsAmount -= 10;
         }
+
     }
+
 
     // Movement methods for different states
     private void Walk()
