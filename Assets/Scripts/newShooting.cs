@@ -66,8 +66,9 @@ public class newShooting : MonoBehaviour
         timer += Time.deltaTime;
 
         // Manage hotkeys and fire bullets
-        HotKeyManagment();
+        
         FireBullet();
+        HotKeyManagment();
     }
 
     public void FireBullet() // Fire Bullet Script

@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-
     public NavMeshAgent agent;
     public float squareOffMovement = 50f;
     private float xMin;

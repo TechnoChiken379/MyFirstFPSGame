@@ -40,8 +40,7 @@ public class playerMovement : MonoBehaviour
     private float normaleScale;
     private float newScale;
 
-    public int health = 100;
-
+    public static int healthPointsAmount = 100;
 
     public PhysicMaterial slidingPhysicMaterial;
     public PhysicMaterial defaultPhysicMaterial;
@@ -50,6 +49,8 @@ public class playerMovement : MonoBehaviour
     public GameObject Body;
     public GameObject MainCam;
 
+    private BoxCollider boxCollider;
+    public GameObject Enemy;
     #endregion
 
     void Start()
@@ -59,6 +60,7 @@ public class playerMovement : MonoBehaviour
         ogScale = characterController.height;
         normaleScale = ogScale;
         newScale = normaleScale / 2;
+        boxCollider = Enemy.GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -146,11 +148,21 @@ public class playerMovement : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
-    private void OnCollisionStay(Collision collision)
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.TryGetComponent<BoxCollider>(out BoxCollider EnemyCapsule))
+    //    {
+    //        Debug.Log("DEBUG HEALTH");
+    //        healthPointsAmount -= 10;
+    //    }
+    //}
+
+    void OnCollisionEnter(Collision collisioninfo)
     {
-        if (collision.rigidbody)
+        if (collisioninfo.collider.CompareTag ("NPC"))
         {
-            health -= 10;
+            Debug.Log("DEBUG HEALTH");
+            healthPointsAmount -= 10;
         }
     }
 

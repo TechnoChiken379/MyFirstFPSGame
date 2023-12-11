@@ -15,8 +15,6 @@ GameObject:
   - component: {fileID: 4028119205953232159}
   - component: {fileID: 185442850524614083}
   - component: {fileID: 4487975006564839950}
-  - component: {fileID: 6413855982933778079}
-  - component: {fileID: 6051332013805101438}
   m_Layer: 6
   m_Name: EnemyCapsule
   m_TagString: NPC
@@ -149,7 +147,6 @@ MonoBehaviour:
   agent: {fileID: 4028119205953232159}
   squareOffMovement: 20
   closeEnough: 2
-  collider: {fileID: 6413855982933778079}
 --- !u!114 &4487975006564839950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,45 +163,3 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: c07f5b05999b4124796a5539737fba48, type: 2}
   attackedMaterial: {fileID: 2100000, guid: fd936cd92675814488f42506ab573012, type: 2}
   navMeshAgent: {fileID: 4028119205953232159}
---- !u!65 &6413855982933778079
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3776463520435115827}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6051332013805101438
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3776463520435115827}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.9, y: 1.9, z: 0.9}
-  m_Center: {x: 0, y: 0, z: 0}
