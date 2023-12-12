@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 
 public class playerMovement : MonoBehaviour
 {
@@ -26,14 +25,9 @@ public class playerMovement : MonoBehaviour
     // Jump-related variables
     private float jumpAmount;
     private float jumpTimer = 0.5f;
+    private float maxJumpTimer = 0.5f;
 
     private CharacterController characterController;
-
-    // Variables for baseline gravity and movement along X and Z axes
-    private float baseLineGravity;
-    private float xMove;
-    private float zMove;
-    private Vector3 move;
 
     // Variables for handling player scale changes
     private float ogScale;
@@ -41,6 +35,8 @@ public class playerMovement : MonoBehaviour
     private float newScale;
 
     public static int healthPointsAmount = 100;
+    public static float healthTimer;
+    private float maxHealthTimer = 1f;
 
     public PhysicMaterial slidingPhysicMaterial;
     public PhysicMaterial defaultPhysicMaterial;
@@ -51,6 +47,8 @@ public class playerMovement : MonoBehaviour
 
     private BoxCollider boxCollider;
     public GameObject Enemy;
+
+    private EnemyMovement damageAmount;
     #endregion
 
     void Start()
@@ -67,6 +65,7 @@ public class playerMovement : MonoBehaviour
     {
         Move(); // Handles player movement
         jumpTimer += Time.deltaTime; // Updates jumpTimer
+        healthTimer += Time.deltaTime;
     }
 
     private void Move()
@@ -121,7 +120,7 @@ public class playerMovement : MonoBehaviour
         }
 
         // Handling double jump mechanics
-        if (Input.GetKey(KeyCode.Space) && jumpTimer >= 0.5 && jumpAmount > 0)
+        if (Input.GetKey(KeyCode.Space) && jumpTimer >= maxJumpTimer && jumpAmount > 0)
         {
             Jump();
             jumpAmount -= 1;
@@ -148,23 +147,26 @@ public class playerMovement : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    if (collision.gameObject.TryGetComponent<BoxCollider>(out BoxCollider EnemyCapsule))
-    //    {
-    //        Debug.Log("DEBUG HEALTH");
-    //        healthPointsAmount -= 10;
-    //    }
-    //}
-
     void OnCollisionEnter(Collision collisioninfo)
     {
-        if (collisioninfo.collider.CompareTag ("NPC"))
+        if (collisioninfo.collider.CompareTag("NPC") && healthTimer >= maxHealthTimer)
         {
-            Debug.Log("DEBUG HEALTH");
-            healthPointsAmount -= 10;
+            Debug.Log("ENEMY");
+            healthPointsAmount -= EnemyMovement.damageAmount;
+            healthTimer = 0f;
         }
 
+        if (collisioninfo.collider.CompareTag("WallJump"))
+        {
+            Debug.Log("WALL");
+            jumpAmount = 3;
+            jumpTimer = 0f;
+            maxJumpTimer = 0.1f;
+        }
+        else if (characterController.isGrounded)
+        {
+            maxJumpTimer = 0.5f;
+        }
     }
 
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2842499744184935229}
   - component: {fileID: 6660039671552781503}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 1228498261154716316}
   - component: {fileID: 3838651042881283035}
   - component: {fileID: 1618752241917271079}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3950419178529264420}
   serializedVersion: 4
-  m_Mass: 99999
+  m_Mass: 9999
   m_Drag: 2
   m_AngularDrag: 2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0272c1aecc8b84a4489f155387b303b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
   enemy: {fileID: 3776463520435115827, guid: 96be620b03aa60245833a8c323d4734d, type: 3}
 --- !u!65 &1618752241917271079
 BoxCollider:

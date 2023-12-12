@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class damageScript : MonoBehaviour
 {
+    public playerMovement playerMovement;
     public GameObject enemy;
     void Start()
     {
@@ -22,5 +23,11 @@ public class damageScript : MonoBehaviour
             Enemy.DamageDealt();
             Destroy(gameObject);
         }
+        //if (collision.collider.CompareTag("Player"))
+        //{
+        //    Debug.Log("Player");
+        //    playerMovement.healthPointsAmount -= EnemyMovement.damageAmount;
+        //    playerMovement.healthTimer = 0f;
+        //}
     }
 }

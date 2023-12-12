@@ -15,9 +15,9 @@ public class EnemyMovement : MonoBehaviour
     private float xPosistion;
     private float zPosistion;
     private float yPosistion;
-    public float closeEnough = 5f;
+    public float closeEnough = 50f;
     public static float enemyHP = 20f;
-    private static float damageAmount = 10;
+    public static int damageAmount = 3;
 
     private GameObject Body;
     private float range = 5;

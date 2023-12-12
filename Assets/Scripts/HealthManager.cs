@@ -8,8 +8,8 @@ public class HealthManager : MonoBehaviour
     public playerMovement health;
     private GameObject HealthGameObject;
     private TMPro.TMP_Text Health;
-    private int healthPoints;
-    public playerMovement playerMovement;
+    public int healthPoints;
+    private playerMovement playerMovement;
 
     void Start()
     {
@@ -20,10 +20,12 @@ public class HealthManager : MonoBehaviour
 
     private void Update()
     {
+
     }
 
     private void LateUpdate()
     {
+        healthPoints = playerMovement.healthPointsAmount;
         Health.text = healthPoints.ToString() + "HP";
     }
 
