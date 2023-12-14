@@ -41,9 +41,6 @@ public class playerMovement : MonoBehaviour
     public static float healthTimer;
     private float maxHealthTimer = 1f;
 
-    public PhysicMaterial slidingPhysicMaterial;
-    public PhysicMaterial defaultPhysicMaterial;
-
     private Rigidbody rb;
     public GameObject Body;
     public GameObject MainCam;
@@ -100,12 +97,10 @@ public class playerMovement : MonoBehaviour
         {
             Walk();
             //rb.freezeRotation = false;
-            GetComponent<Collider>().material = defaultPhysicMaterial;
         }
         else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftControl))
         {
             Crawl();
-            GetComponent<Collider>().material = slidingPhysicMaterial;
         }
 
         // Scaling the player based on whether LeftControl is pressed or not

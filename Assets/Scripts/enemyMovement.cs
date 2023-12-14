@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public GameObject bulletGrenade;
     public float squareOffMovement = 50f;
     private float xMin;
     private float xMax;
@@ -68,10 +69,11 @@ public class EnemyMovement : MonoBehaviour
 
         }
     }
-    void OnCollisionEnter(Collision collisioninfo)
+    void OnCollisionEnter(Collision collision)
     {
-        if (collisioninfo.collider.CompareTag("Grenade"))
+        if (collision.gameObject.TryGetComponent<SphereCollider>(out SphereCollider Radius))
         {
+            Debug.Log("spherecollider");
             enemyHP = 0;
         }
     }
