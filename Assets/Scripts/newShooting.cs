@@ -18,36 +18,66 @@ public class newShooting : MonoBehaviour
     private Vector3 newGunPosition;
     private Vector3 aimGunPosition = new Vector3(0, -0.075f, 0.855f);
     private Vector3 aimGunPositionOnDS = new Vector3(0, -0.075f, 0.855f);
+    [SerializeField] public static int gunMaxAmmo = 16;
+    [SerializeField] public static int gunCurrentAmmo;
+    [SerializeField] public static int gunBackUpAmmoAmount;
+    [SerializeField] public static float gunTimer;
+    [SerializeField] public static float gunMaxTimer = 2.5f;
 
     // AK positions for different states
     private Vector3 originalAKPosition;
     private Vector3 newAKPosition;
     private Vector3 aimAKPosition = new Vector3(0, -0.1f, 1.92f);
     private Vector3 aimAKPositionOnDS = new Vector3(0, -0.1f, 1.92f);
+    [SerializeField] public static int aKMaxAmmo = 36;
+    [SerializeField] public static int aKCurrentAmmo;
+    [SerializeField] public static int aKBackUpAmmoAmount;
+    [SerializeField] public static float aKTimer;
+    [SerializeField] public static float aKMaxTimer = 3.5f;
 
     // Sniper positions for different states
     private Vector3 originalSniperPosition;
     private Vector3 newSniperPosition;
     private Vector3 aimSniperPosition = new Vector3(0, -0.2f, -1.7f);
     private Vector3 aimSniperPositionOnDS = new Vector3(0, -0.2f, -1.7f);
+    [SerializeField] public static int sniperMaxAmmo = 10;
+    [SerializeField] public static int sniperCurrentAmmo;
+    [SerializeField] public static int sniperBackUpAmmoAmount;
+    [SerializeField] public static float sniperTimer;
+    [SerializeField] public static float sniperMaxTimer = 5f;
 
     // GumGun positions for different states
     private Vector3 originalGumGunPosition;
     private Vector3 newGumGunPosition;
     private Vector3 aimGumGunPosition = new Vector3(0, -0.075f, 0.855f);
     private Vector3 aimGumGunPositionOnDS = new Vector3(0, -0.075f, 0.855f);
+    [SerializeField] public static int gumGunMaxAmmo = 69;
+    [SerializeField] public static int gumGunCurrentAmmo;
+    [SerializeField] public static int gumGunBackUpAmmoAmount;
+    [SerializeField] public static float gumGunTimer;
+    [SerializeField] public static float gumGunMaxTimer = 7f;
 
     // EpicGun positions for different states
     private Vector3 originalEpicGunPosition;
     private Vector3 newEpicGunPosition;
     private Vector3 aimEpicGunPosition = new Vector3(0, -0.075f, 0.855f);
     private Vector3 aimEpicGunPositionOnDS = new Vector3(0, -0.075f, 0.855f);
+    [SerializeField] public static int epicGunMaxAmmo = 32;
+    [SerializeField] public static int epicGunCurrentAmmo;
+    [SerializeField] public static int epicGunBackUpAmmoAmount;
+    [SerializeField] public static float epicGunTimer;
+    [SerializeField] public static float epicGunMaxTimer = 6f;
 
     // GumGun positions for different states
     private Vector3 originalGrenadePosition;
     private Vector3 newGrenadePosition;
     private Vector3 aimGrenadePosition = new Vector3(0, -0.075f, 0.855f);
     private Vector3 aimGrenadePositionOnDS = new Vector3(0, -0.075f, 0.855f);
+    [SerializeField] public static int grenadeMaxAmmo = 1;
+    [SerializeField] public static int grenadeCurrentAmmo;
+    [SerializeField] public static int grenadeBackUpAmmoAmount;
+    [SerializeField] public static float grenadeTimer;
+    [SerializeField] public static float grenadeMaxTimer = 4f;
 
     // Hotkey variables to manage different weapons
     private bool hotKey1;
@@ -72,6 +102,25 @@ public class newShooting : MonoBehaviour
 
         newGumGunPosition = transform.localPosition;
         originalGumGunPosition = newGumGunPosition;
+
+
+        gunCurrentAmmo = gunMaxAmmo;
+        gunBackUpAmmoAmount = gunMaxAmmo;
+
+        aKCurrentAmmo = aKMaxAmmo;
+        aKBackUpAmmoAmount = aKMaxAmmo;
+
+        sniperCurrentAmmo = sniperMaxAmmo;
+        sniperBackUpAmmoAmount = sniperMaxAmmo;
+
+        gumGunCurrentAmmo = gumGunMaxAmmo;
+        gumGunBackUpAmmoAmount = gumGunMaxAmmo;
+
+        epicGunCurrentAmmo = epicGunMaxAmmo;
+        epicGunBackUpAmmoAmount = epicGunMaxAmmo;
+
+        grenadeCurrentAmmo = grenadeMaxAmmo;
+        grenadeBackUpAmmoAmount = grenadeMaxAmmo;
     }
 
     void Update()
@@ -79,10 +128,22 @@ public class newShooting : MonoBehaviour
         // Update timer for firing rate control
         timer += Time.deltaTime;
 
+        gunTimer += Time.deltaTime;
+
+        aKTimer += Time.deltaTime;
+
+        sniperTimer += Time.deltaTime;
+
+        gumGunTimer += Time.deltaTime;
+
+        epicGunTimer += Time.deltaTime;
+
+        grenadeTimer += Time.deltaTime;
+
         // Manage hotkeys and fire bullets
-        
-        FireBullet();
+
         HotKeyManagment();
+        AmmoAmountStorage();
     }
 
     public void FireBullet() // Fire Bullet Script
@@ -95,6 +156,18 @@ public class newShooting : MonoBehaviour
             spawnedBullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.right * fireSpeed;
             Destroy(spawnedBullet, 2); // Destroy the bullet after 2 seconds
             timer = 0f; // Reset the firing timer
+
+            gunTimer = 0f;
+
+            aKTimer = 0f;
+
+            sniperTimer = 0f;
+
+            gumGunTimer = 0f;
+
+            epicGunTimer = 0f;
+
+            grenadeTimer = 0f;
         }
 
         // Handle aiming positions based on right mouse button and hotkeys
@@ -295,6 +368,117 @@ public class newShooting : MonoBehaviour
             hotKey4 = false;
             hotKey5 = false;
             hotKey6 = true;
+        }
+    }
+
+    public void AmmoAmountStorage()
+    {
+        if (hotKey1 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (gunCurrentAmmo >= 1)
+            {
+                FireBullet();
+                gunCurrentAmmo -= 1;
+                gunTimer = 0;
+            }
+            if (gunCurrentAmmo <= 0 && gunTimer >= gunMaxTimer)
+            {
+                gunCurrentAmmo = gunMaxAmmo;
+            }
+        }
+        if (hotKey1 == false)
+        {
+            gunBackUpAmmoAmount = gunCurrentAmmo;
+        }
+
+        if (hotKey2 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (aKCurrentAmmo >= 1)
+            {
+                FireBullet();
+                aKCurrentAmmo -= 1;
+                aKTimer = 0;
+            }
+            if (aKCurrentAmmo <= 0 && aKTimer >= aKMaxTimer)
+            {
+                aKCurrentAmmo = aKMaxAmmo;
+            }
+        }
+        if (hotKey2 == false)
+        {
+            aKBackUpAmmoAmount = aKCurrentAmmo;
+        }
+
+        if (hotKey3 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (sniperCurrentAmmo >= 1)
+            {
+                FireBullet();
+                sniperCurrentAmmo -= 1;
+                sniperTimer = 0;
+            }
+            if (sniperCurrentAmmo <= 0 && sniperTimer >= sniperMaxTimer)
+            {
+                sniperCurrentAmmo = sniperMaxAmmo;
+            }
+        }
+        if (hotKey3 == false)
+        {
+            sniperBackUpAmmoAmount = sniperCurrentAmmo;
+        }
+
+        if (hotKey4 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (gumGunCurrentAmmo >= 1)
+            {
+                FireBullet();
+                gumGunCurrentAmmo -= 1;
+                gumGunTimer = 0;
+            }
+            if (gumGunCurrentAmmo <= 0 && gumGunTimer >= gumGunMaxTimer)
+            {
+                gumGunCurrentAmmo = gumGunMaxAmmo;
+            }
+        }
+        if (hotKey4 == false)
+        {
+            gumGunBackUpAmmoAmount = gumGunCurrentAmmo;
+        }
+
+        if (hotKey5 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (epicGunCurrentAmmo >= 1)
+            {
+                FireBullet();
+                epicGunCurrentAmmo -= 1;
+                epicGunTimer = 0;
+            }
+            if (epicGunCurrentAmmo <= 0 && epicGunTimer >= epicGunMaxTimer)
+            {
+                epicGunCurrentAmmo = epicGunMaxAmmo;
+            }
+        }
+        if (hotKey5 == false)
+        {
+            epicGunBackUpAmmoAmount = epicGunCurrentAmmo;
+        }
+
+        if (hotKey6 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (grenadeCurrentAmmo >= 1)
+            {
+                FireBullet();
+                grenadeCurrentAmmo -= 1;
+                grenadeTimer = 0;
+            }
+            if (grenadeCurrentAmmo <= 0 && grenadeTimer >= grenadeMaxTimer)
+            {
+                grenadeCurrentAmmo = grenadeMaxAmmo;
+            }
+        }
+        if (hotKey6 == false)
+        {
+            grenadeBackUpAmmoAmount = grenadeCurrentAmmo;
         }
     }
 }
