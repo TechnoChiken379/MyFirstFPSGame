@@ -13,6 +13,7 @@ public class newShooting : MonoBehaviour
     // Timer variables for controlling firing rate
     public float timer = 0f;
     public float canFire = 0.2f;
+    public bool isReloading = false;
 
     // Gun positions for different states
     private Vector3 originalGunPosition;
@@ -22,8 +23,8 @@ public class newShooting : MonoBehaviour
     [SerializeField] public static int gunMaxAmmo = 16;
     [SerializeField] public static int gunCurrentAmmo;
     [SerializeField] public static int gunBackUpAmmoAmount;
-    [SerializeField] public static float gunTimer;
-    [SerializeField] public static float gunMaxTimer = 2.5f;
+    [SerializeField] public static float gunFireRate = 0.2f;
+    [SerializeField] public static float gunReloadTime = 2.5f;
 
     // AK positions for different states
     private Vector3 originalAKPosition;
@@ -33,8 +34,8 @@ public class newShooting : MonoBehaviour
     [SerializeField] public static int aKMaxAmmo = 36;
     [SerializeField] public static int aKCurrentAmmo;
     [SerializeField] public static int aKBackUpAmmoAmount;
-    [SerializeField] public static float aKTimer;
-    [SerializeField] public static float aKMaxTimer = 3.5f;
+    [SerializeField] public static float aKFireRate = 0.08f;
+    [SerializeField] public static float aKReloadTime = 3.5f;
 
     // Sniper positions for different states
     private Vector3 originalSniperPosition;
@@ -44,8 +45,8 @@ public class newShooting : MonoBehaviour
     [SerializeField] public static int sniperMaxAmmo = 10;
     [SerializeField] public static int sniperCurrentAmmo;
     [SerializeField] public static int sniperBackUpAmmoAmount;
-    [SerializeField] public static float sniperTimer;
-    [SerializeField] public static float sniperMaxTimer = 5f;
+    [SerializeField] public static float sniperFireRate = 2f;
+    [SerializeField] public static float sniperReloadTime = 5f;
 
     // GumGun positions for different states
     private Vector3 originalGumGunPosition;
@@ -55,8 +56,8 @@ public class newShooting : MonoBehaviour
     [SerializeField] public static int gumGunMaxAmmo = 69;
     [SerializeField] public static int gumGunCurrentAmmo;
     [SerializeField] public static int gumGunBackUpAmmoAmount;
-    [SerializeField] public static float gumGunTimer;
-    [SerializeField] public static float gumGunMaxTimer = 7f;
+    [SerializeField] public static float gumGunFireRate = 0.05f;
+    [SerializeField] public static float gumGunReloadTime = 7f;
 
     // EpicGun positions for different states
     private Vector3 originalEpicGunPosition;
@@ -66,8 +67,8 @@ public class newShooting : MonoBehaviour
     [SerializeField] public static int epicGunMaxAmmo = 32;
     [SerializeField] public static int epicGunCurrentAmmo;
     [SerializeField] public static int epicGunBackUpAmmoAmount;
-    [SerializeField] public static float epicGunTimer;
-    [SerializeField] public static float epicGunMaxTimer = 6f;
+    [SerializeField] public static float epicGunFireRate = 0.35f;
+    [SerializeField] public static float epicGunReloadTime = 6f;
 
     // GumGun positions for different states
     private Vector3 originalGrenadePosition;
@@ -77,8 +78,8 @@ public class newShooting : MonoBehaviour
     [SerializeField] public static int grenadeMaxAmmo = 1;
     [SerializeField] public static int grenadeCurrentAmmo;
     [SerializeField] public static int grenadeBackUpAmmoAmount;
-    [SerializeField] public static float grenadeTimer;
-    [SerializeField] public static float grenadeMaxTimer = 4f;
+    [SerializeField] public static float grenadeFireRate = 4f;
+    [SerializeField] public static float grenadeReloadTime = 4f;
 
     // Hotkey variables to manage different weapons
     public bool hotKey1;
@@ -88,12 +89,6 @@ public class newShooting : MonoBehaviour
     public bool hotKey5;
     public bool hotKey6;
 
-    public bool gunBool;
-    public bool aKBool;
-    public bool sniperBool;
-    public bool gumGunBool;
-    public bool epicGunBool;
-    public bool grenadeBool;
     #endregion
 
     void Start()
@@ -145,47 +140,30 @@ public class newShooting : MonoBehaviour
         // Update timer for firing rate control
         timer += Time.deltaTime;
 
-        gunTimer += Time.deltaTime;
-
-        aKTimer += Time.deltaTime;
-
-        sniperTimer += Time.deltaTime;
-
-        gumGunTimer += Time.deltaTime;
-
-        epicGunTimer += Time.deltaTime;
-
-        grenadeTimer += Time.deltaTime;
-
         // Manage hotkeys and fire bullets
 
         FireBullet();
         HotKeyManagment();
-        AmmoAmountStorage();
     }
 
     public void FireBullet() // Fire Bullet Script
     {
+        if (isReloading)
+        {   
+            if(timer >= canFire)
+            {
+                ReloadGun();
+            }
+        }
         // Fire bullet when left mouse button is pressed and cooldown is met
-        if (Input.GetMouseButtonDown(0) && timer >= canFire)
+        else if (Input.GetMouseButton(0) && timer >= canFire)
         {
             // Instantiate a bullet and set its velocity
             GameObject spawnedBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
             spawnedBullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.right * fireSpeed;
             Destroy(spawnedBullet, 2); // Destroy the bullet after 2 seconds
             timer = 0f; // Reset the firing timer
-
-            gunTimer = 0f;
-
-            aKTimer = 0f;
-
-            sniperTimer = 0f;
-
-            gumGunTimer = 0f;
-
-            epicGunTimer = 0f;
-
-            grenadeTimer = 0f;
+            AmmoAmountStorage();
         }
 
         // Handle aiming positions based on right mouse button and hotkeys
@@ -335,6 +313,7 @@ public class newShooting : MonoBehaviour
         // Check for hotkey presses and update hotKey variables
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            BackupAmmo();
             hotKey1 = true;
             hotKey2 = false;
             hotKey3 = false;
@@ -344,6 +323,7 @@ public class newShooting : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            BackupAmmo();
             hotKey1 = false;
             hotKey2 = true;
             hotKey3 = false;
@@ -353,6 +333,7 @@ public class newShooting : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            BackupAmmo();
             hotKey1 = false;
             hotKey2 = false;
             hotKey3 = true;
@@ -362,6 +343,7 @@ public class newShooting : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
+            BackupAmmo();
             hotKey1 = false;
             hotKey2 = false;
             hotKey3 = false;
@@ -371,6 +353,7 @@ public class newShooting : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
+            BackupAmmo();
             hotKey1 = false;
             hotKey2 = false;
             hotKey3 = false;
@@ -380,6 +363,7 @@ public class newShooting : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
+            BackupAmmo();
             hotKey1 = false;
             hotKey2 = false;
             hotKey3 = false;
@@ -391,118 +375,147 @@ public class newShooting : MonoBehaviour
 
     public void AmmoAmountStorage()
     {
-        if (hotKey1 == true && Input.GetMouseButton(0))
+        
+        // check if weapon is equiped
+        if (hotKey1 == true)
         {
+            // if there's still bullits
             if (gunCurrentAmmo >= 1)
             {
-                gunBool = true;
+                // reduce bullit
                 gunCurrentAmmo -= 1;
-                gunTimer = 0;
+                canFire = gunFireRate;
             }
-            if (gunCurrentAmmo <= 0 && gunTimer >= gunMaxTimer)
+            if (gunCurrentAmmo == 0)
             {
-                gunBool = false;
-                gunCurrentAmmo = gunMaxAmmo;
+                isReloading = true;
+                canFire = gunReloadTime;
             }
         }
-        if (hotKey1 == false)
+        if (hotKey2 == true)
         {
-            gunBackUpAmmoAmount = gunCurrentAmmo;
-        }
-
-        if (hotKey2 == true && Input.GetMouseButton(0))
-        {
+            // if there's still bullits
             if (aKCurrentAmmo >= 1)
             {
-                aKBool = true;
+                // reduce bullit
                 aKCurrentAmmo -= 1;
-                aKTimer = 0;
+                canFire = aKFireRate;
             }
-            if (aKCurrentAmmo <= 0 && aKTimer >= aKMaxTimer)
+            if (aKCurrentAmmo == 0)
             {
-                aKBool = false;
-                aKCurrentAmmo = aKMaxAmmo;
+                isReloading = true;
+                canFire = aKReloadTime;
             }
         }
-        if (hotKey2 == false)
+        if (hotKey3 == true)
         {
-            aKBackUpAmmoAmount = aKCurrentAmmo;
-        }
-
-        if (hotKey3 == true && Input.GetMouseButton(0))
-        {
+            // if there's still bullits
             if (sniperCurrentAmmo >= 1)
             {
-                sniperBool = true;
+                // reduce bullit
                 sniperCurrentAmmo -= 1;
-                sniperTimer = 0;
+                canFire = sniperFireRate;
             }
-            if (sniperCurrentAmmo <= 0 && sniperTimer >= sniperMaxTimer)
+            if (sniperCurrentAmmo == 0)
             {
-                sniperBool |= false;
-                sniperCurrentAmmo = sniperMaxAmmo;
+                isReloading = true;
+                canFire = sniperReloadTime;
             }
         }
-        if (hotKey3 == false)
+        if (hotKey4 == true)
         {
-            sniperBackUpAmmoAmount = sniperCurrentAmmo;
-        }
-
-        if (hotKey4 == true && Input.GetMouseButton(0))
-        {
+            // if there's still bullits
             if (gumGunCurrentAmmo >= 1)
             {
-                gumGunBool = true;
+                // reduce bullit
                 gumGunCurrentAmmo -= 1;
-                gumGunTimer = 0;
+                canFire = gumGunFireRate;
             }
-            if (gumGunCurrentAmmo <= 0 && gumGunTimer >= gumGunMaxTimer)
+            if (gumGunCurrentAmmo == 0)
             {
-                gumGunBool |= false;
-                gumGunCurrentAmmo = gumGunMaxAmmo;
+                isReloading = true;
+                canFire = gumGunReloadTime;
             }
         }
-        if (hotKey4 == false)
+        if (hotKey5 == true)
         {
-            gumGunBackUpAmmoAmount = gumGunCurrentAmmo;
-        }
-
-        if (hotKey5 == true && Input.GetMouseButton(0))
-        {
+            // if there's still bullits
             if (epicGunCurrentAmmo >= 1)
             {
-                epicGunBool = true;
+                // reduce bullit
                 epicGunCurrentAmmo -= 1;
-                epicGunTimer = 0;
+                canFire = epicGunFireRate;
             }
-            if (epicGunCurrentAmmo <= 0 && epicGunTimer >= epicGunMaxTimer)
+            if (epicGunCurrentAmmo == 0)
             {
-                epicGunBool |= false;
-                epicGunCurrentAmmo = epicGunMaxAmmo;
+                isReloading = true;
+                canFire = epicGunReloadTime;
             }
         }
-        if (hotKey5 == false)
+        if (hotKey6 == true)
         {
-            epicGunBackUpAmmoAmount = epicGunCurrentAmmo;
-        }
-
-        if (hotKey6 == true && Input.GetMouseButton(0))
-        {
+            // if there's still bullits
             if (grenadeCurrentAmmo >= 1)
             {
-                grenadeBool = true;
+                // reduce bullit
                 grenadeCurrentAmmo -= 1;
-                grenadeTimer = 0;
+                canFire = grenadeFireRate;
             }
-            if (grenadeCurrentAmmo <= 0 && grenadeTimer >= grenadeMaxTimer)
+            if (grenadeCurrentAmmo == 0)
             {
-                grenadeBool |= false;
-                grenadeCurrentAmmo = grenadeMaxAmmo;
+                isReloading = true;
+                canFire = grenadeReloadTime;
             }
         }
-        if (hotKey6 == false)
+    }
+
+    public void BackupAmmo()
+    {
+        gunBackUpAmmoAmount = gunCurrentAmmo;
+        aKBackUpAmmoAmount = aKCurrentAmmo;
+        sniperBackUpAmmoAmount = sniperCurrentAmmo;
+        gumGunBackUpAmmoAmount = gumGunCurrentAmmo;
+        epicGunBackUpAmmoAmount = epicGunCurrentAmmo;
+        grenadeBackUpAmmoAmount = grenadeCurrentAmmo;
+    }
+
+    public void ReloadGun()
+    {
+        // check if weapon is equiped
+        if (hotKey1 == true)
         {
-            grenadeBackUpAmmoAmount = grenadeCurrentAmmo;
+            isReloading = false;
+            gunCurrentAmmo = gunMaxAmmo;
+        }
+        // check if weapon is equiped
+        if (hotKey2 == true)
+        {
+            isReloading = false;
+            aKCurrentAmmo = aKMaxAmmo;
+        }
+        // check if weapon is equiped
+        if (hotKey3 == true)
+        {
+            isReloading = false;
+            sniperCurrentAmmo = sniperMaxAmmo;
+        }
+        // check if weapon is equiped
+        if (hotKey4 == true)
+        {
+            isReloading = false;
+            gumGunCurrentAmmo = gumGunMaxAmmo;
+        }
+        // check if weapon is equiped
+        if (hotKey5 == true)
+        {
+            isReloading = false;
+            epicGunCurrentAmmo = epicGunMaxAmmo;
+        }
+        // check if weapon is equiped
+        if (hotKey6 == true)
+        {
+            isReloading = false;
+            grenadeCurrentAmmo = grenadeMaxAmmo;
         }
     }
 }

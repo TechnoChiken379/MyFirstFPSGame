@@ -3216,12 +3216,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e9839651f6e474b8b822b63f2c3a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3950419178529264420, guid: ec86f95443661164db5fc7bccd807916, type: 3}
+  bullet: {fileID: 3950419178529264420, guid: cc341c2a63e40fa42b9ff4823cf4590f, type: 3}
   Pistol: {fileID: 6543793955367365030}
   bulletSpawnPoint: {fileID: 5256225468850514194}
-  fireSpeed: 50
+  fireSpeed: 250
   timer: 0
-  canFire: 0.35
+  canFire: 0.2
+  isReloading: 0
+  hotKey1: 0
+  hotKey2: 0
+  hotKey3: 0
+  hotKey4: 0
+  hotKey5: 0
+  hotKey6: 0
 --- !u!1 &6613727370103768207
 GameObject:
   m_ObjectHideFlags: 0

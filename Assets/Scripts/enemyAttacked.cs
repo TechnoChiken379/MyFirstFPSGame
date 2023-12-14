@@ -18,11 +18,11 @@ public class enemyAttacked : MonoBehaviour
 
     public GameObject enemyBullet;
     public Transform bulletSpawnPoint;
-    private float fireSpeed = 200;
+    private float fireSpeed = 100;
     private float fireRange = 18;
 
     private float timer = 0f;
-    private float canFire = 1f;
+    private float canFire = 0.3f;
 
     private void Awake()
     {

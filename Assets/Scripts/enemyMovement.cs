@@ -68,4 +68,11 @@ public class EnemyMovement : MonoBehaviour
 
         }
     }
+    void OnCollisionEnter(Collision collisioninfo)
+    {
+        if (collisioninfo.collider.CompareTag("Grenade"))
+        {
+            enemyHP = 0;
+        }
+    }
 }
