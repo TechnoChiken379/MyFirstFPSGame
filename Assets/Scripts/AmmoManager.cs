@@ -5,27 +5,95 @@ using UnityEngine.UI;
 
 public class AmmoManager : MonoBehaviour
 {
-    public playerMovement health;
-    private GameObject HealthGameObject;
-    private TMPro.TMP_Text Health;
-    public int healthPoints;
-    private playerMovement playerMovement;
+    private GameObject AmmoGameObject;
+    private TMPro.TMP_Text AmmoAmount;
 
-    void Start()
+    public int gunCurrentAmmo;
+    public newShooting Pistol;
+
+    public int aKCurrentAmmo;
+    public newShooting AK;
+
+    public int sniperCurrentAmmo;
+    public newShooting Sniper;
+
+    public int gumGunCurrentAmmo;
+    public newShooting GumGun;
+
+    public int epicGunCurrentAmmo;
+    public newShooting EpicGun;
+
+    public int grenadeCurrentAmmo;
+    public newShooting Grenade;
+
+    private void Start()
     {
-        healthPoints = playerMovement.healthPointsAmount;
-        HealthGameObject = GameObject.Find("Health");
-        Health = HealthGameObject.GetComponent<TMPro.TMP_Text>();
+        gunCurrentAmmo = newShooting.gunCurrentAmmo;
+        AmmoGameObject = GameObject.Find("AmmoAmount");
+        AmmoAmount = AmmoGameObject.GetComponent<TMPro.TMP_Text>();
+
+        aKCurrentAmmo = newShooting.aKCurrentAmmo;
+        AmmoGameObject = GameObject.Find("AmmoAmount");
+        AmmoAmount = AmmoGameObject.GetComponent<TMPro.TMP_Text>();
+
+        sniperCurrentAmmo = newShooting.sniperCurrentAmmo;
+        AmmoGameObject = GameObject.Find("AmmoAmount");
+        AmmoAmount = AmmoGameObject.GetComponent<TMPro.TMP_Text>();
+
+        gumGunCurrentAmmo = newShooting.gumGunCurrentAmmo;
+        AmmoGameObject = GameObject.Find("AmmoAmount");
+        AmmoAmount = AmmoGameObject.GetComponent<TMPro.TMP_Text>();
+
+        epicGunCurrentAmmo = newShooting.epicGunCurrentAmmo;
+        AmmoGameObject = GameObject.Find("AmmoAmount");
+        AmmoAmount = AmmoGameObject.GetComponent<TMPro.TMP_Text>();
+
+        grenadeCurrentAmmo = newShooting.grenadeCurrentAmmo;
+        AmmoGameObject = GameObject.Find("AmmoAmount");
+        AmmoAmount = AmmoGameObject.GetComponent<TMPro.TMP_Text>();
     }
 
     private void Update()
     {
-
+        AmmoShowerPerGun();
     }
 
-    private void LateUpdate()
+    public void AmmoShowerPerGun()
     {
-        healthPoints = playerMovement.healthPointsAmount;
-        Health.text = healthPoints.ToString() + "HP";
+        if (Pistol.hotKey1 == true)
+        {
+            gunCurrentAmmo = newShooting.gunCurrentAmmo;
+            AmmoAmount.text = gunCurrentAmmo.ToString() + " / " + newShooting.gunMaxAmmo.ToString();
+        }
+
+        if (AK.hotKey2 == true)
+        {
+            aKCurrentAmmo = newShooting.aKCurrentAmmo;
+            AmmoAmount.text = aKCurrentAmmo.ToString() + " / " + newShooting.aKMaxAmmo.ToString();
+        }
+
+        if (Sniper.hotKey3 == true)
+        {
+            sniperCurrentAmmo = newShooting.sniperCurrentAmmo;
+            AmmoAmount.text = sniperCurrentAmmo.ToString() + " / " + newShooting.sniperMaxAmmo.ToString();
+        }
+
+        if (GumGun.hotKey4 == true)
+        {
+            gumGunCurrentAmmo = newShooting.gumGunCurrentAmmo;
+            AmmoAmount.text = gumGunCurrentAmmo.ToString() + " / " + newShooting.gumGunMaxAmmo.ToString();
+        }
+
+        if (EpicGun.hotKey5 == true)
+        {
+            epicGunCurrentAmmo = newShooting.epicGunCurrentAmmo;
+            AmmoAmount.text = epicGunCurrentAmmo.ToString() + " / " + newShooting.epicGunMaxAmmo.ToString();
+        }
+
+        if (Grenade.hotKey6 == true)
+        {
+            grenadeCurrentAmmo = newShooting.grenadeCurrentAmmo;
+            AmmoAmount.text = grenadeCurrentAmmo.ToString() + " / " + newShooting.grenadeMaxAmmo.ToString();
+        }
     }
 }

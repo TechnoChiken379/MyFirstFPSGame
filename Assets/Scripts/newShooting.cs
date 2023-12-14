@@ -80,12 +80,12 @@ public class newShooting : MonoBehaviour
     [SerializeField] public static float grenadeMaxTimer = 4f;
 
     // Hotkey variables to manage different weapons
-    private bool hotKey1;
-    private bool hotKey2;
-    private bool hotKey3;
-    private bool hotKey4;
-    private bool hotKey5;
-    private bool hotKey6;
+    public bool hotKey1;
+    public bool hotKey2;
+    public bool hotKey3;
+    public bool hotKey4;
+    public bool hotKey5;
+    public bool hotKey6;
     #endregion
 
     void Start()
