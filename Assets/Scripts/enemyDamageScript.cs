@@ -20,7 +20,6 @@ public class enemyDamageScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("Player");
             playerMovement.healthPointsAmount -= EnemyMovement.damageAmount;
             playerMovement.healthTimer = 0f;
 

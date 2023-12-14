@@ -17,31 +17,45 @@ public class newShooting : MonoBehaviour
     private Vector3 originalGunPosition;
     private Vector3 newGunPosition;
     private Vector3 aimGunPosition = new Vector3(0, -0.075f, 0.855f);
-    private Vector3 aimGunPositionOnDS = new Vector3(0, -0.150f, 0.855f);
+    private Vector3 aimGunPositionOnDS = new Vector3(0, -0.075f, 0.855f);
 
     // AK positions for different states
     private Vector3 originalAKPosition;
     private Vector3 newAKPosition;
     private Vector3 aimAKPosition = new Vector3(0, -0.1f, 1.92f);
-    private Vector3 aimAKPositionOnDS = new Vector3(0, -0.2f, 1.92f);
+    private Vector3 aimAKPositionOnDS = new Vector3(0, -0.1f, 1.92f);
 
     // Sniper positions for different states
     private Vector3 originalSniperPosition;
     private Vector3 newSniperPosition;
-    private Vector3 aimSniperPosition = new Vector3(0, -0.17f, -0.2f);
-    private Vector3 aimSniperPositionOnDS = new Vector3(0, -0.34f, -0.2f);
+    private Vector3 aimSniperPosition = new Vector3(0, -0.2f, -1.7f);
+    private Vector3 aimSniperPositionOnDS = new Vector3(0, -0.2f, -1.7f);
 
     // GumGun positions for different states
     private Vector3 originalGumGunPosition;
     private Vector3 newGumGunPosition;
     private Vector3 aimGumGunPosition = new Vector3(0, -0.075f, 0.855f);
-    private Vector3 aimGumGunPositionOnDS = new Vector3(0, -0.150f, 0.855f);
+    private Vector3 aimGumGunPositionOnDS = new Vector3(0, -0.075f, 0.855f);
+
+    // EpicGun positions for different states
+    private Vector3 originalEpicGunPosition;
+    private Vector3 newEpicGunPosition;
+    private Vector3 aimEpicGunPosition = new Vector3(0, -0.075f, 0.855f);
+    private Vector3 aimEpicGunPositionOnDS = new Vector3(0, -0.075f, 0.855f);
+
+    // GumGun positions for different states
+    private Vector3 originalGrenadePosition;
+    private Vector3 newGrenadePosition;
+    private Vector3 aimGrenadePosition = new Vector3(0, -0.075f, 0.855f);
+    private Vector3 aimGrenadePositionOnDS = new Vector3(0, -0.075f, 0.855f);
 
     // Hotkey variables to manage different weapons
     private bool hotKey1;
     private bool hotKey2;
     private bool hotKey3;
     private bool hotKey4;
+    private bool hotKey5;
+    private bool hotKey6;
     #endregion
 
     void Start()
@@ -107,6 +121,16 @@ public class newShooting : MonoBehaviour
                 newGumGunPosition = aimGumGunPosition;
                 transform.localPosition = aimGumGunPosition;
             }
+            else if (hotKey5 == true)
+            {
+                newEpicGunPosition = aimEpicGunPosition;
+                transform.localPosition = aimEpicGunPosition;
+            }
+            else if (hotKey6 == true)
+            {
+                newGrenadePosition = aimGrenadePosition;
+                transform.localPosition = aimGrenadePosition;
+            }
         }
         // Handle returning to original positions when not aiming
         else if (!Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftControl))
@@ -131,6 +155,16 @@ public class newShooting : MonoBehaviour
             {
                 newGumGunPosition = originalGumGunPosition;
                 transform.localPosition = newGumGunPosition;
+            }
+            else if (hotKey5 == false)
+            {
+                newEpicGunPosition = originalEpicGunPosition;
+                transform.localPosition = newEpicGunPosition;
+            }
+            else if (hotKey6 == false)
+            {
+                newGrenadePosition = originalGrenadePosition;
+                transform.localPosition = newGrenadePosition;
             }
         }
         // Handle aiming positions on left control key press
@@ -157,6 +191,16 @@ public class newShooting : MonoBehaviour
                 newGumGunPosition = aimGumGunPositionOnDS;
                 transform.localPosition = aimGumGunPositionOnDS;
             }
+            else if (hotKey5 == true)
+            {
+                newEpicGunPosition = aimEpicGunPositionOnDS;
+                transform.localPosition = aimEpicGunPositionOnDS;
+            }
+            else if (hotKey6 == true)
+            {
+                newGrenadePosition = aimGrenadePositionOnDS;
+                transform.localPosition = aimGrenadePositionOnDS;
+            }
         }
         // Handle returning to original positions when not aiming on left control key press
         else if (!Input.GetMouseButton(1) && Input.GetKey(KeyCode.LeftControl))
@@ -182,6 +226,16 @@ public class newShooting : MonoBehaviour
                 newGumGunPosition = originalGumGunPosition;
                 transform.localPosition = newGumGunPosition;
             }
+            else if (hotKey5 == false)
+            {
+                newEpicGunPosition = originalEpicGunPosition;
+                transform.localPosition = newEpicGunPosition;
+            }
+            else if (hotKey6 == false)
+            {
+                newGrenadePosition = originalGrenadePosition;
+                transform.localPosition = newGrenadePosition;
+            }
         }
     }
 
@@ -194,6 +248,8 @@ public class newShooting : MonoBehaviour
             hotKey2 = false;
             hotKey3 = false;
             hotKey4 = false;
+            hotKey5 = false;
+            hotKey6 = false;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -201,6 +257,8 @@ public class newShooting : MonoBehaviour
             hotKey2 = true;
             hotKey3 = false;
             hotKey4 = false;
+            hotKey5 = false;
+            hotKey6 = false;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -208,6 +266,8 @@ public class newShooting : MonoBehaviour
             hotKey2 = false;
             hotKey3 = true;
             hotKey4 = false;
+            hotKey5 = false;
+            hotKey6 = false;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -215,6 +275,26 @@ public class newShooting : MonoBehaviour
             hotKey2 = false;
             hotKey3 = false;
             hotKey4 = true;
+            hotKey5 = false;
+            hotKey6 = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            hotKey1 = false;
+            hotKey2 = false;
+            hotKey3 = false;
+            hotKey4 = false;
+            hotKey5 = true;
+            hotKey6 = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            hotKey1 = false;
+            hotKey2 = false;
+            hotKey3 = false;
+            hotKey4 = false;
+            hotKey5 = false;
+            hotKey6 = true;
         }
     }
 }

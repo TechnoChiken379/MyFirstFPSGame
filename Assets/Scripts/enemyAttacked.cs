@@ -65,7 +65,6 @@ public class enemyAttacked : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.position) <= fireRange && timer >= canFire)
         {
-            Debug.Log("WORKS");
             GameObject spawnedBullet = Instantiate(enemyBullet, bulletSpawnPoint.position, Quaternion.identity);
 
             Vector3 directionToPlayer = (player.position - bulletSpawnPoint.position).normalized;

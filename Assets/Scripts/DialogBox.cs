@@ -1,10 +1,11 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogBox : MonoBehaviour
 {
-    [SerializeField] int lettersPerSecond;
+    [SerializeField] public int lettersPerSecond;
     [SerializeField] TextMeshProUGUI welcomeText;
     [SerializeField] float delayBeforeStart = 0f;
 
@@ -12,6 +13,11 @@ public class DialogBox : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartDialogAfterDelay());
+    }
+
+    void Update()
+    {
+        LettersPerSecond();
     }
 
     IEnumerator StartDialogAfterDelay()
@@ -29,6 +35,17 @@ public class DialogBox : MonoBehaviour
         {
             welcomeText.text += letter;
             yield return new WaitForSeconds(1f / lettersPerSecond);
+        }
+    }
+    public void LettersPerSecond()
+    {
+        if (Input.GetKey(KeyCode.LeftAlt))
+        {
+            lettersPerSecond = 100;
+        }
+        if (Input.GetKey(KeyCode.RightAlt))
+        {
+            SceneManager.LoadScene("MainScene");
         }
     }
 }

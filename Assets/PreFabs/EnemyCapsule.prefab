@@ -470,8 +470,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemyGun
       objectReference: {fileID: 0}
+    - target: {fileID: 4335261998709253957, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6374206873211186553, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}

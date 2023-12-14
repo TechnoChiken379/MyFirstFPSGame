@@ -28,10 +28,4 @@ public class HealthManager : MonoBehaviour
         healthPoints = playerMovement.healthPointsAmount;
         Health.text = healthPoints.ToString() + "HP";
     }
-
-    // Call this method to increase the score
-    public void DecreaseHealth(playerMovement playerMovement)
-    {
-        //PlayerHealth();
-    }
 }

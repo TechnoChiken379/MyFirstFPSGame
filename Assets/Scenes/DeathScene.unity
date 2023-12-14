@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 120360351}
   - component: {fileID: 120360350}
   - component: {fileID: 120360349}
+  - component: {fileID: 120360352}
   m_Layer: 5
   m_Name: DIALOG
   m_TagString: Untagged
@@ -173,9 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6bdb1696eb01c4aba6f31e09451564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lettersPerSecond: 10
+  lettersPerSecond: 25
   welcomeText: {fileID: 120360350}
-  delayBeforeStart: 0
+  delayBeforeStart: 0.9
 --- !u!114 &120360350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,36 +198,37 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "In the ethereal realms of our gaming universe, a solemn event transpires,
-    as [Character Name] meets a fate foretold by the threads of destiny. The echoes
-    of their footsteps, once resonating with determination and courage, now fade
-    into the winds of eternity. [Character Name], a virtual entity embodying the
-    hopes and dreams of players, has completed their journey through the pixelated
-    tapestry of our gaming world.\r\n\r\nAs the curtain of mortality descends upon
-    them, let us reflect on the myriad adventures that defined [Character Name]'s
-    existence. From the humble beginnings in the tutorial zones to the epic battles
-    against formidable foes, their saga unfolded like an interactive epic. Each decision,
-    every strategic maneuver, and the bonds forged with virtual companions contributed
-    to the rich tapestry of their digital existence.\r\n\r\nIn the face of relentless
-    challenges, [Character Name] stood resilient, a beacon of inspiration for players
+    as Capsule with Gun meets a fate foretold by the threads of destiny. The echoes
+    of its metallic footsteps, once resonating with determination and courage, now
+    fade into the winds of eternity. Capsule with Gun, a virtual entity embodying
+    the hopes and dreams of players, has completed its journey through the pixelated
+    tapestry of our gaming world.\r\n\rAs the curtain of mortality descends upon
+    it, let us reflect on the myriad adventures that defined Capsule with Gun's existence.
+    From the humble beginnings in the tutorial zones to the epic battles against
+    formidable foes, its saga unfolded like an interactive epic. Each decision, every
+    strategic maneuver, and the bonds forged with virtual companions contributed
+    to the rich tapestry of its digital existence.\r\n\rIn the face of relentless
+    challenges, Capsule with Gun stood resilient, a beacon of inspiration for players
     across the realms. Whether delving into dark dungeons, scaling towering peaks,
-    or navigating intricate mazes, they embraced the unpredictable nature of the
-    gaming cosmos. Alas, the virtual sun has set on their journey, casting long shadows
-    across the landscape of pixels and polygons.\r\n\r\nThe digital landscape, once
-    vibrant with [Character Name]'s presence, now bears the weight of their absence.
-    The NPC vendors, fellow adventurers, and in-game denizens mourn the passing of
-    a hero. The pixels themselves seem to grieve, as the algorithms that defined
-    [Character Name]'s movements and actions now rest in the silent corners of the
-    game's code.\r\n\r\nIn the annals of our virtual history, [Character Name] will
-    forever be remembered. Achievements unlocked, quests completed, and trophies
-    earned\u2014all stand as testament to their prowess. The virtual obituary echoes
-    through the servers, reminding players that in the ever-shifting tapestry of
-    gaming, every avatar, every pixel, and every line of code has a story to tell.\r\n\r\nAs
-    we bid farewell to [Character Name], let us carry their legacy forward in our
-    own virtual endeavors. In the transient nature of gaming, where respawns and
-    restarts abound, [Character Name] may have logged out, but their impact on the
-    gaming cosmos endures. May their journey inspire new generations of players to
-    embrace the challenges, cherish the victories, and forge their own narratives
-    within the vast expanse of our beloved digital realms.f"
+    or navigating intricate mazes, it embraced the unpredictable nature of the gaming
+    cosmos. Alas, the virtual sun has set on its journey, casting long shadows across
+    the landscape of pixels and polygons.\r\n\rThe digital landscape, once vibrant
+    with Capsule with Gun's presence, now bears the weight of its absence. The NPC
+    vendors, fellow adventurers, and in-game denizens mourn the passing of a hero.
+    The pixels themselves seem to grieve, as the algorithms that defined Capsule
+    with Gun's movements and actions now rest in the silent corners of the game's
+    code.\r\n\rIn the annals of our virtual history, Capsule with Gun will forever
+    be remembered. Achievements unlocked, quests completed, and trophies earned\u2014all
+    stand as testament to its prowess. The virtual obituary echoes through the servers,
+    reminding players that in the ever-shifting tapestry of gaming, every avatar,
+    every pixel, and every line of code has a story to tell.\r\n\rAs we bid farewell
+    to Capsule with Gun, let us carry its legacy forward in our own virtual endeavors.
+    In the transient nature of gaming, where respawns and restarts abound, Capsule
+    with Gun may have logged out, but its impact on the gaming cosmos endures. May
+    its journey inspire new generations of players to embrace the challenges, cherish
+    the victories, and forge their own narratives within the vast expanse of our
+    beloved digital realms.\n\nPress \"Left Alt\" to speed up the dialog...\nPress
+    \"Right Alt\" to respawn..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -235,8 +237,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279697152
+  m_fontColor: {r: 0, g: 1, b: 0.08734918, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -248,18 +250,18 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 2425
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.8
-  m_fontSizeBase: 13.8
+  m_fontSize: 27.58
+  m_fontSizeBase: 27.58
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -303,6 +305,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120360347}
   m_CullTransparentMesh: 1
+--- !u!95 &120360352
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120360347}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab0610afb4cdd934fa4dad2c03abe77c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &229660667
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,13 +573,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493421291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &980811403
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +676,7 @@ RectTransform:
   m_Children:
   - {fileID: 1150059269}
   - {fileID: 120360348}
+  - {fileID: 1607446248}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -735,6 +759,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150059268}
   m_CullTransparentMesh: 1
+--- !u!1001 &1215788640
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 980811407}
+    m_Modifications:
+    - target: {fileID: 9013577564239697308, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_Name
+      value: ScreenTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+--- !u!224 &1607446248 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9116056945920905505, guid: 08f74ccaececa7e42b715954e6da8049, type: 3}
+  m_PrefabInstance: {fileID: 1215788640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

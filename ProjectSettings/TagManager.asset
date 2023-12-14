@@ -7,6 +7,7 @@ TagManager:
   - NPC
   - BODY
   - WallJump
+  - HealthPod
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -34,7 +35,9 @@ public class playerMovement : MonoBehaviour
     private float normaleScale;
     private float newScale;
 
+    public static int minHealthPointsAmount = 0;
     public static int healthPointsAmount = 100;
+    private static int currentAmountHealthPoints;
     public static float healthTimer;
     private float maxHealthTimer = 1f;
 
@@ -54,6 +57,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         // Initialization
+        currentAmountHealthPoints = healthPointsAmount;
         characterController = GetComponent<CharacterController>(); // Gets CharacterController
         ogScale = characterController.height;
         normaleScale = ogScale;
@@ -63,6 +67,7 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
+        DeathScene();
         Move(); // Handles player movement
         jumpTimer += Time.deltaTime; // Updates jumpTimer
         healthTimer += Time.deltaTime;
@@ -158,7 +163,6 @@ public class playerMovement : MonoBehaviour
 
         if (collisioninfo.collider.CompareTag("WallJump"))
         {
-            Debug.Log("WALL");
             jumpAmount = 3;
             jumpTimer = 0f;
             maxJumpTimer = 0.1f;
@@ -196,4 +200,14 @@ public class playerMovement : MonoBehaviour
         //rb.freezeRotation = true;
         moveDirection *= crawlSpeed;
     }
+
+    public void DeathScene()
+    {
+        if (healthPointsAmount <= minHealthPointsAmount)
+        {
+            SceneManager.LoadScene("DeathScene");
+            healthPointsAmount = currentAmountHealthPoints;
+        }
+    }
+
 }
