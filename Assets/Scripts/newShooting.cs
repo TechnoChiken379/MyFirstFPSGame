@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class newShooting : MonoBehaviour
@@ -86,6 +87,13 @@ public class newShooting : MonoBehaviour
     public bool hotKey4;
     public bool hotKey5;
     public bool hotKey6;
+
+    public bool gunBool;
+    public bool aKBool;
+    public bool sniperBool;
+    public bool gumGunBool;
+    public bool epicGunBool;
+    public bool grenadeBool;
     #endregion
 
     void Start()
@@ -121,6 +129,15 @@ public class newShooting : MonoBehaviour
 
         grenadeCurrentAmmo = grenadeMaxAmmo;
         grenadeBackUpAmmoAmount = grenadeMaxAmmo;
+
+        hotKey1 = true;
+        hotKey2 = false;
+        hotKey3 = false;
+        hotKey4 = false;
+        hotKey5 = false;
+        hotKey6 = false;
+
+        HotKeyManagment();
     }
 
     void Update()
@@ -142,6 +159,7 @@ public class newShooting : MonoBehaviour
 
         // Manage hotkeys and fire bullets
 
+        FireBullet();
         HotKeyManagment();
         AmmoAmountStorage();
     }
@@ -149,7 +167,7 @@ public class newShooting : MonoBehaviour
     public void FireBullet() // Fire Bullet Script
     {
         // Fire bullet when left mouse button is pressed and cooldown is met
-        if (Input.GetMouseButton(0) && timer >= canFire)
+        if (Input.GetMouseButtonDown(0) && timer >= canFire)
         {
             // Instantiate a bullet and set its velocity
             GameObject spawnedBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
@@ -373,16 +391,17 @@ public class newShooting : MonoBehaviour
 
     public void AmmoAmountStorage()
     {
-        if (hotKey1 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (hotKey1 == true && Input.GetMouseButton(0))
         {
             if (gunCurrentAmmo >= 1)
             {
-                FireBullet();
+                gunBool = true;
                 gunCurrentAmmo -= 1;
                 gunTimer = 0;
             }
             if (gunCurrentAmmo <= 0 && gunTimer >= gunMaxTimer)
             {
+                gunBool = false;
                 gunCurrentAmmo = gunMaxAmmo;
             }
         }
@@ -391,16 +410,17 @@ public class newShooting : MonoBehaviour
             gunBackUpAmmoAmount = gunCurrentAmmo;
         }
 
-        if (hotKey2 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (hotKey2 == true && Input.GetMouseButton(0))
         {
             if (aKCurrentAmmo >= 1)
             {
-                FireBullet();
+                aKBool = true;
                 aKCurrentAmmo -= 1;
                 aKTimer = 0;
             }
             if (aKCurrentAmmo <= 0 && aKTimer >= aKMaxTimer)
             {
+                aKBool = false;
                 aKCurrentAmmo = aKMaxAmmo;
             }
         }
@@ -409,16 +429,17 @@ public class newShooting : MonoBehaviour
             aKBackUpAmmoAmount = aKCurrentAmmo;
         }
 
-        if (hotKey3 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (hotKey3 == true && Input.GetMouseButton(0))
         {
             if (sniperCurrentAmmo >= 1)
             {
-                FireBullet();
+                sniperBool = true;
                 sniperCurrentAmmo -= 1;
                 sniperTimer = 0;
             }
             if (sniperCurrentAmmo <= 0 && sniperTimer >= sniperMaxTimer)
             {
+                sniperBool |= false;
                 sniperCurrentAmmo = sniperMaxAmmo;
             }
         }
@@ -427,16 +448,17 @@ public class newShooting : MonoBehaviour
             sniperBackUpAmmoAmount = sniperCurrentAmmo;
         }
 
-        if (hotKey4 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (hotKey4 == true && Input.GetMouseButton(0))
         {
             if (gumGunCurrentAmmo >= 1)
             {
-                FireBullet();
+                gumGunBool = true;
                 gumGunCurrentAmmo -= 1;
                 gumGunTimer = 0;
             }
             if (gumGunCurrentAmmo <= 0 && gumGunTimer >= gumGunMaxTimer)
             {
+                gumGunBool |= false;
                 gumGunCurrentAmmo = gumGunMaxAmmo;
             }
         }
@@ -445,16 +467,17 @@ public class newShooting : MonoBehaviour
             gumGunBackUpAmmoAmount = gumGunCurrentAmmo;
         }
 
-        if (hotKey5 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (hotKey5 == true && Input.GetMouseButton(0))
         {
             if (epicGunCurrentAmmo >= 1)
             {
-                FireBullet();
+                epicGunBool = true;
                 epicGunCurrentAmmo -= 1;
                 epicGunTimer = 0;
             }
             if (epicGunCurrentAmmo <= 0 && epicGunTimer >= epicGunMaxTimer)
             {
+                epicGunBool |= false;
                 epicGunCurrentAmmo = epicGunMaxAmmo;
             }
         }
@@ -463,16 +486,17 @@ public class newShooting : MonoBehaviour
             epicGunBackUpAmmoAmount = epicGunCurrentAmmo;
         }
 
-        if (hotKey6 == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (hotKey6 == true && Input.GetMouseButton(0))
         {
             if (grenadeCurrentAmmo >= 1)
             {
-                FireBullet();
+                grenadeBool = true;
                 grenadeCurrentAmmo -= 1;
                 grenadeTimer = 0;
             }
             if (grenadeCurrentAmmo <= 0 && grenadeTimer >= grenadeMaxTimer)
             {
+                grenadeBool |= false;
                 grenadeCurrentAmmo = grenadeMaxAmmo;
             }
         }

@@ -66,31 +66,31 @@ public class AmmoManager : MonoBehaviour
             AmmoAmount.text = gunCurrentAmmo.ToString() + " / " + newShooting.gunMaxAmmo.ToString();
         }
 
-        if (AK.hotKey2 == true)
+        else if (AK.hotKey2 == true)
         {
             aKCurrentAmmo = newShooting.aKCurrentAmmo;
             AmmoAmount.text = aKCurrentAmmo.ToString() + " / " + newShooting.aKMaxAmmo.ToString();
         }
 
-        if (Sniper.hotKey3 == true)
+        else if (Sniper.hotKey3 == true)
         {
             sniperCurrentAmmo = newShooting.sniperCurrentAmmo;
             AmmoAmount.text = sniperCurrentAmmo.ToString() + " / " + newShooting.sniperMaxAmmo.ToString();
         }
 
-        if (GumGun.hotKey4 == true)
+        else if (GumGun.hotKey4 == true)
         {
             gumGunCurrentAmmo = newShooting.gumGunCurrentAmmo;
             AmmoAmount.text = gumGunCurrentAmmo.ToString() + " / " + newShooting.gumGunMaxAmmo.ToString();
         }
 
-        if (EpicGun.hotKey5 == true)
+        else if (EpicGun.hotKey5 == true)
         {
             epicGunCurrentAmmo = newShooting.epicGunCurrentAmmo;
             AmmoAmount.text = epicGunCurrentAmmo.ToString() + " / " + newShooting.epicGunMaxAmmo.ToString();
         }
 
-        if (Grenade.hotKey6 == true)
+        else if (Grenade.hotKey6 == true)
         {
             grenadeCurrentAmmo = newShooting.grenadeCurrentAmmo;
             AmmoAmount.text = grenadeCurrentAmmo.ToString() + " / " + newShooting.grenadeMaxAmmo.ToString();
