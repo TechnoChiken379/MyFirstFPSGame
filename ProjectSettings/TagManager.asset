@@ -9,6 +9,7 @@ TagManager:
   - WallJump
   - HealthPod
   - Grenade
+  - MILK
   layers:
   - Default
   - TransparentFX

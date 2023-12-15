@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class WinningItem : MonoBehaviour
 {
-    void OnCollisionEnter(Collision collisioninfo)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        SceneManager.LoadScene("MainMenu");
+        if (hit.gameObject.tag == "Player")
+        {
+            Debug.Log("HIT");
+        }
     }
 }

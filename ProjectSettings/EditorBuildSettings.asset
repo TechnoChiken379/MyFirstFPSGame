@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/INFO+CONTROLS.unity
     guid: 0a9139cc2f33e374fa05302d4ca83682
+  - enabled: 1
+    path: Assets/Scenes/WinningScene.unity
+    guid: 9743d91699b378549b087c4799a98853
   m_configObjects: {}

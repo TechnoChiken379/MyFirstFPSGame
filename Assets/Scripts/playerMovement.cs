@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
 
 public class playerMovement : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class playerMovement : MonoBehaviour
     public GameObject Enemy;
 
     private EnemyMovement damageAmount;
+
+    private bool wallJump;
     #endregion
 
     void Start()
@@ -191,6 +194,20 @@ public class playerMovement : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         {
+            if (hit.gameObject.tag == "WallJump")
+            {
+                wallJump = true;
+            }
+            else if (hit.gameObject.tag == "Untagged")
+            {
+                wallJump = false;
+            }
+
+            if (hit.gameObject.tag == "MILK")
+            {
+                SceneManager.LoadScene("WinningScene");
+            }
+
             if (hit.gameObject.tag == "NPC" && healthTimer >= maxHealthTimer)
             {
                 Debug.Log("ENEMY");
@@ -198,13 +215,20 @@ public class playerMovement : MonoBehaviour
                 healthTimer = 0f;
             }
 
-            if (hit.gameObject.tag == "WallJump" && !characterController.isGrounded)
+            if (wallJump == true)
             {
                 jumpAmount = 2;
-                jumpTimer = 0f;
                 maxJumpTimer = 0.2f;
+                if (characterController.isGrounded)
+                {
+                    jumpTimer = 0.2f;
+                }
+                else
+                {
+                    jumpTimer = 0.1f;
+                }
             }
-            else if (characterController.isGrounded)
+            else if (wallJump == false)
             {
                 maxJumpTimer = 0.5f;
             }

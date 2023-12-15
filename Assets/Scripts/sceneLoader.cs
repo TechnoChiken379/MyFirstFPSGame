@@ -11,7 +11,6 @@ public class sceneLoader : MonoBehaviour
     }
     public void LoadScene(string sceneName)
     {
-        Debug.Log("BUTTON");
         SceneManager.LoadScene(sceneName);
     }
 }
