@@ -64,8 +64,8 @@ public class newShooting : MonoBehaviour
     // EpicGun positions for different states
     private Vector3 originalEpicGunPosition;
     private Vector3 newEpicGunPosition;
-    private Vector3 aimEpicGunPosition = new Vector3(0, -0.075f, 0.855f);
-    private Vector3 aimEpicGunPositionOnDS = new Vector3(0, -0.075f, 0.855f);
+    private Vector3 aimEpicGunPosition = new Vector3(0, -0.24f, 0.81f);
+    private Vector3 aimEpicGunPositionOnDS = new Vector3(0, -0.24f, 0.81f);
     [SerializeField] public static int epicGunMaxAmmo = 32;
     [SerializeField] public static int epicGunCurrentAmmo;
     [SerializeField] public static int epicGunBackUpAmmoAmount;
@@ -75,8 +75,8 @@ public class newShooting : MonoBehaviour
     // GumGun positions for different states
     private Vector3 originalGrenadePosition;
     private Vector3 newGrenadePosition;
-    private Vector3 aimGrenadePosition = new Vector3(0, -0.075f, 0.855f);
-    private Vector3 aimGrenadePositionOnDS = new Vector3(0, -0.075f, 0.855f);
+    private Vector3 aimGrenadePosition = new Vector3(0, -0.264f, 1.385f);
+    private Vector3 aimGrenadePositionOnDS = new Vector3(0, -0.264f, 1.385f);
     [SerializeField] public static int grenadeMaxAmmo = 1;
     [SerializeField] public static int grenadeCurrentAmmo;
     [SerializeField] public static int grenadeBackUpAmmoAmount;

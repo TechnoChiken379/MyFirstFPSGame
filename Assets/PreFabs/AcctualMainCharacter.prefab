@@ -37,8 +37,8 @@ Transform:
   - {fileID: 1430258488890954981}
   - {fileID: 75266821253487845}
   - {fileID: 1950937346591315544}
-  - {fileID: 3874654610879459787}
   - {fileID: 8427305671018593911}
+  - {fileID: 8416038891843886511}
   m_Father: {fileID: 2034572707177239039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1649827064962370776
@@ -132,7 +132,7 @@ MonoBehaviour:
   AK: {fileID: 9136294350816824203}
   Sniper: {fileID: 2172409914662396810}
   GumGun: {fileID: 6907554183063261238}
-  EpicGun: {fileID: 2877387640265341434}
+  EpicGun: {fileID: 7207443462936310464}
   Grenade: {fileID: 1864527703856636185}
 --- !u!1 &5097220919705022199
 GameObject:
@@ -186,8 +186,8 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 8
   crawlSpeed: 1.8
-  slidingPhysicMaterial: {fileID: 13400000, guid: ec53181968f877845b57c486eada18c2, type: 2}
-  defaultPhysicMaterial: {fileID: 13400000, guid: ca286117e89f7ae4793479d8d3d337a7, type: 2}
+  jumpAmount: 0
+  jumpTimer: 0.65
   Body: {fileID: 5340579526599862261}
   MainCam: {fileID: 2645705133513003543}
   Enemy: {fileID: 3776463520435115827, guid: 96be620b03aa60245833a8c323d4734d, type: 3}
@@ -420,80 +420,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 6352228438179899774}
   healthPoints: 0
---- !u!1001 &1191094690480093257
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5949846269357427221}
-    m_Modifications:
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.484
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.324
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.913
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99452
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.1045472
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -12.002
-      objectReference: {fileID: 0}
-    - target: {fileID: 3992747417819021747, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_Name
-      value: EpicGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 3992747417819021747, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 650046880612284973}
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
---- !u!1 &2877387640265341434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3992747417819021747, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-  m_PrefabInstance: {fileID: 1191094690480093257}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3874654610879459787 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-  m_PrefabInstance: {fileID: 1191094690480093257}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2601561750484378157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1033,83 +959,72 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8547632102303450827, guid: f2e80019f1f321a4c9a22012a30dc189, type: 3}
   m_PrefabInstance: {fileID: 2973437824796858109}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3190652623696507823
+--- !u!1001 &4683902765246344876
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3874654610879459787}
+    m_TransformParent: {fileID: 5949846269357427221}
     m_Modifications:
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
+    - target: {fileID: 2667656118934559852, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+      propertyPath: m_Name
+      value: EpicGun
       objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.734196
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.006471
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.97814006
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5009999
       objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2079471
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+    - target: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 12.002
-      objectReference: {fileID: 0}
-    - target: {fileID: 3992747417819021747, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_Name
-      value: EpicGun (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3992747417819021747, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
---- !u!4 &650046880612284973 stripped
+--- !u!1 &7207443462936310464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2667656118934559852, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+  m_PrefabInstance: {fileID: 4683902765246344876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8416038891843886511 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2684734276232530306, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
-  m_PrefabInstance: {fileID: 3190652623696507823}
+  m_CorrespondingSourceObject: {fileID: 3876286975812072195, guid: 63096c7bfb57cf84ba2a36472d5f28f6, type: 3}
+  m_PrefabInstance: {fileID: 4683902765246344876}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4841400385601718463
 PrefabInstance:
@@ -1240,7 +1155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6369061208154753008, guid: e60a58707d9162842846ba7c6774cae6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
