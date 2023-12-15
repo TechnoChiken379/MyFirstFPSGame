@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3829385165597478924}
   - component: {fileID: 2183444665006830199}
   - component: {fileID: 3237024805545429897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7127261480972166203}
   - component: {fileID: 1731481077913270013}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthPods
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 541430175740930047}
   - component: {fileID: 3358241355447412330}
   - component: {fileID: 5638361246689473865}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 948495237444914804}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: H (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 8019464475276001566}
   - component: {fileID: 4403177226919237480}
   - component: {fileID: 7209315142452589634}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8381891880333186529}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: H (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 2335463735229693334}
   - component: {fileID: 5961655798452726225}
   - component: {fileID: 2500515202083509278}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 1008212247367418304}
   - component: {fileID: 8205174471861247758}
   - component: {fileID: 8171252260611430350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 1510168863435231539}
   - component: {fileID: 275706888462669090}
   - component: {fileID: 8191748355500378293}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 4366992939730933465}
   - component: {fileID: 3111463230184582849}
   - component: {fileID: 9206393137422763832}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (4)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 7198788041795291122}
   - component: {fileID: 2160936771720234333}
   - component: {fileID: 3357261816595191714}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 1023661149897492702}
   - component: {fileID: 301324240937099673}
   - component: {fileID: 6911581714046544168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4836687848008892031}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: H (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 209479296678273016}
   - component: {fileID: 470341209344298933}
   - component: {fileID: 4708713507840279408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -992,7 +992,7 @@ GameObject:
   - component: {fileID: 5667104311032121252}
   - component: {fileID: 845437423256131284}
   - component: {fileID: 1084784173497930135}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 3151492987081604354}
   - component: {fileID: 6065264116646023778}
   - component: {fileID: 8950978782622432111}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (4)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 4563680230289863949}
   - component: {fileID: 5239750032108841464}
   - component: {fileID: 1974301125656535061}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 2503903906684138382}
   - component: {fileID: 2953140166840093135}
   - component: {fileID: 516647872962429288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (4)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -1327,7 +1327,7 @@ GameObject:
   - component: {fileID: 2453042264557171784}
   - component: {fileID: 6695253613247320606}
   - component: {fileID: 4906385852682531252}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -1463,7 +1463,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &8540512530086023046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1475,7 @@ GameObject:
   - component: {fileID: 5676680847573463743}
   - component: {fileID: 6326017405115929296}
   - component: {fileID: 4653077184244661100}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (4)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
@@ -1556,7 +1556,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575578976893051708}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1593,7 +1593,7 @@ GameObject:
   - component: {fileID: 5878875938398668369}
   - component: {fileID: 5376886074733681634}
   - component: {fileID: 6656664360673953700}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: HealthPod
   m_Icon: {fileID: 0}
