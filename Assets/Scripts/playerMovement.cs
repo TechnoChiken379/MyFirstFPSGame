@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
@@ -19,14 +20,14 @@ public class playerMovement : MonoBehaviour
     private Vector3 moveDirectionX;
     private Vector3 moveDirectionZ;
     private Vector3 velocity;
-    private float gravity = -30f;
-    private float jumpheight = 2f;
-    private float airSpeed = 0.78f;
+    private float gravity = -45f;
+    private float jumpheight = 3.5f;
+    private float airSpeed = 1.27f;
 
     // Jump-related variables
-    private float jumpAmount;
-    private float jumpTimer = 0.5f;
-    private float maxJumpTimer = 0.5f;
+    public float jumpAmount;
+    public float jumpTimer = 0.65f;
+    private float maxJumpTimer = 0.65f;
 
     private CharacterController characterController;
 
@@ -147,28 +148,6 @@ public class playerMovement : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision collisioninfo)
-    {
-        if (collisioninfo.collider.CompareTag("NPC") && healthTimer >= maxHealthTimer)
-        {
-            Debug.Log("ENEMY");
-            healthPointsAmount -= EnemyMovement.damageAmount;
-            healthTimer = 0f;
-        }
-
-        if (collisioninfo.collider.CompareTag("WallJump"))
-        {
-            jumpAmount = 3;
-            jumpTimer = 0f;
-            maxJumpTimer = 0.1f;
-        }
-        else if (characterController.isGrounded)
-        {
-            maxJumpTimer = 0.5f;
-        }
-    }
-
-
     // Movement methods for different states
     private void Walk()
     {
@@ -204,5 +183,26 @@ public class playerMovement : MonoBehaviour
             healthPointsAmount = currentAmountHealthPoints;
         }
     }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        {
+            if (hit.gameObject.tag == "NPC" && healthTimer >= maxHealthTimer)
+            {
+                Debug.Log("ENEMY");
+                healthPointsAmount -= EnemyMovement.damageAmount;
+                healthTimer = 0f;
+            }
 
+            if (hit.gameObject.tag == "WallJump" && !characterController.isGrounded)
+            {
+                jumpAmount = 2;
+                jumpTimer = 0f;
+                maxJumpTimer = 0.2f;
+            }
+            else if (characterController.isGrounded)
+            {
+                maxJumpTimer = 0.5f;
+            }
+        }
+    }
 }

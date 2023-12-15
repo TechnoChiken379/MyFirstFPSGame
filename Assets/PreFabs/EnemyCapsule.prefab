@@ -254,7 +254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 4028119205953232159}
-  squareOffMovement: 20
+  bulletGrenade: {fileID: 0}
+  squareOffMovement: 40
   closeEnough: 2
 --- !u!114 &4487975006564839950
 MonoBehaviour:
@@ -268,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea7bea4bc36ff140ac11fe66aadb58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 20
+  attackRange: 30
   defaultMaterial: {fileID: 2100000, guid: c07f5b05999b4124796a5539737fba48, type: 2}
   attackedMaterial: {fileID: 2100000, guid: fd936cd92675814488f42506ab573012, type: 2}
   navMeshAgent: {fileID: 4028119205953232159}

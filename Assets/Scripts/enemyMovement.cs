@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     public static int damageAmount = 3;
 
     private GameObject Body;
-    private float range = 5;
+    private float range = 10;
     // Start is called before the first frame update
     void Start()
     {
