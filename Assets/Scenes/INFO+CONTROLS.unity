@@ -673,7 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lettersPerSecond: 30
   welcomeText: {fileID: 891416358}
-  delayBeforeStart: 1.7
+  delayBeforeStart: 1.65
 --- !u!95 &891416361
 Animator:
   serializedVersion: 5
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lettersPerSecond: 30
   welcomeText: {fileID: 1926803507}
-  delayBeforeStart: 1.7
+  delayBeforeStart: 1.65
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
