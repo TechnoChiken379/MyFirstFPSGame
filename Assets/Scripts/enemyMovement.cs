@@ -73,7 +73,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<SphereCollider>(out SphereCollider Radius))
         {
-            Debug.Log("spherecollider");
             enemyHP = 0;
         }
     }

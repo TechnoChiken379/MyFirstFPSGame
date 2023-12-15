@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
 
@@ -39,7 +38,7 @@ public class playerMovement : MonoBehaviour
 
     public static int minHealthPointsAmount = 0;
     public static int healthPointsAmount = 100;
-    private static int currentAmountHealthPoints;
+    public static int currentAmountHealthPoints;
     public static float healthTimer;
     private float maxHealthTimer = 1f;
 
@@ -77,6 +76,12 @@ public class playerMovement : MonoBehaviour
     private void Move()
     {
         // Handling gravity when the player is grounded
+        if (Input.GetKey(KeyCode.RightAlt))
+        {
+            healthPointsAmount = currentAmountHealthPoints;
+            SceneManager.LoadScene("MainMenu");
+        }
+
         if (characterController.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -210,7 +215,6 @@ public class playerMovement : MonoBehaviour
 
             if (hit.gameObject.tag == "NPC" && healthTimer >= maxHealthTimer)
             {
-                Debug.Log("ENEMY");
                 healthPointsAmount -= EnemyMovement.damageAmount;
                 healthTimer = 0f;
             }

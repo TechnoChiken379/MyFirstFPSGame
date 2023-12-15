@@ -8,6 +8,7 @@ public class DialogBox : MonoBehaviour
     [SerializeField] public int lettersPerSecond;
     [SerializeField] TextMeshProUGUI welcomeText;
     [SerializeField] float delayBeforeStart = 0f;
+    public playerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class DialogBox : MonoBehaviour
 
     void Update()
     {
-        LettersPerSecond();
+        LettersPerSecond(playerMovement);
     }
 
     IEnumerator StartDialogAfterDelay()
@@ -37,7 +38,7 @@ public class DialogBox : MonoBehaviour
             yield return new WaitForSeconds(1f / lettersPerSecond);
         }
     }
-    public void LettersPerSecond()
+    public void LettersPerSecond(playerMovement playerMovement)
     {
         if (Input.GetKey(KeyCode.LeftAlt))
         {
@@ -45,6 +46,7 @@ public class DialogBox : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.RightAlt))
         {
+            playerMovement.healthPointsAmount = playerMovement.currentAmountHealthPoints;
             SceneManager.LoadScene("MainMenu");
         }
     }
