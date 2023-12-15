@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class newShooting : MonoBehaviour
     public GameObject bullet;
     public GameObject Pistol;
     public Transform bulletSpawnPoint;
+    public GameObject canvas;
     public float fireSpeed = 250;
 
     // Timer variables for controlling firing rate
@@ -93,6 +95,8 @@ public class newShooting : MonoBehaviour
 
     void Start()
     {
+
+        canvas = GameObject.Find("AmmoAmount");
         // Initialization of gun positions
         newGunPosition = transform.localPosition;
         originalGunPosition = newGunPosition;
@@ -131,8 +135,9 @@ public class newShooting : MonoBehaviour
         hotKey4 = false;
         hotKey5 = false;
         hotKey6 = false;
-
         HotKeyManagment();
+        // todo: make initial ammo ui dynamic
+        UpdateAmmoUI(gunCurrentAmmo, gunMaxAmmo);
     }
 
     void Update()
@@ -149,8 +154,9 @@ public class newShooting : MonoBehaviour
     public void FireBullet() // Fire Bullet Script
     {
         if (isReloading)
-        {   
-            if(timer >= canFire)
+        {
+            canvas.GetComponent<TextMeshProUGUI>().text = "Reloading";
+            if (timer >= canFire)
             {
                 ReloadGun();
             }
@@ -320,6 +326,8 @@ public class newShooting : MonoBehaviour
             hotKey4 = false;
             hotKey5 = false;
             hotKey6 = false;
+            UpdateAmmoUI(gunCurrentAmmo, gunMaxAmmo);
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -330,6 +338,8 @@ public class newShooting : MonoBehaviour
             hotKey4 = false;
             hotKey5 = false;
             hotKey6 = false;
+            UpdateAmmoUI(aKCurrentAmmo, aKMaxAmmo);
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -340,6 +350,7 @@ public class newShooting : MonoBehaviour
             hotKey4 = false;
             hotKey5 = false;
             hotKey6 = false;
+            UpdateAmmoUI(sniperCurrentAmmo, sniperMaxAmmo);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -350,6 +361,7 @@ public class newShooting : MonoBehaviour
             hotKey4 = true;
             hotKey5 = false;
             hotKey6 = false;
+            UpdateAmmoUI(gumGunCurrentAmmo, gumGunMaxAmmo);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
@@ -360,6 +372,7 @@ public class newShooting : MonoBehaviour
             hotKey4 = false;
             hotKey5 = true;
             hotKey6 = false;
+            UpdateAmmoUI(epicGunCurrentAmmo, epicGunMaxAmmo);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
@@ -370,6 +383,7 @@ public class newShooting : MonoBehaviour
             hotKey4 = false;
             hotKey5 = false;
             hotKey6 = true;
+            UpdateAmmoUI(grenadeCurrentAmmo, grenadeMaxAmmo);
         }
     }
 
@@ -391,6 +405,7 @@ public class newShooting : MonoBehaviour
                 isReloading = true;
                 canFire = gunReloadTime;
             }
+            UpdateAmmoUI(gunCurrentAmmo, gunMaxAmmo);
         }
         if (hotKey2 == true)
         {
@@ -406,6 +421,8 @@ public class newShooting : MonoBehaviour
                 isReloading = true;
                 canFire = aKReloadTime;
             }
+            UpdateAmmoUI(aKCurrentAmmo, aKMaxAmmo);
+
         }
         if (hotKey3 == true)
         {
@@ -421,6 +438,7 @@ public class newShooting : MonoBehaviour
                 isReloading = true;
                 canFire = sniperReloadTime;
             }
+            UpdateAmmoUI(sniperCurrentAmmo, sniperMaxAmmo);
         }
         if (hotKey4 == true)
         {
@@ -436,6 +454,7 @@ public class newShooting : MonoBehaviour
                 isReloading = true;
                 canFire = gumGunReloadTime;
             }
+            UpdateAmmoUI(gumGunCurrentAmmo, gumGunMaxAmmo);
         }
         if (hotKey5 == true)
         {
@@ -451,6 +470,7 @@ public class newShooting : MonoBehaviour
                 isReloading = true;
                 canFire = epicGunReloadTime;
             }
+            UpdateAmmoUI(epicGunCurrentAmmo, epicGunMaxAmmo);
         }
         if (hotKey6 == true)
         {
@@ -466,6 +486,7 @@ public class newShooting : MonoBehaviour
                 isReloading = true;
                 canFire = grenadeReloadTime;
             }
+            UpdateAmmoUI(grenadeCurrentAmmo, grenadeMaxAmmo);
         }
     }
 
@@ -486,36 +507,49 @@ public class newShooting : MonoBehaviour
         {
             isReloading = false;
             gunCurrentAmmo = gunMaxAmmo;
+            UpdateAmmoUI(gunCurrentAmmo, gunMaxAmmo);
+
         }
         // check if weapon is equiped
         if (hotKey2 == true)
         {
             isReloading = false;
             aKCurrentAmmo = aKMaxAmmo;
+            UpdateAmmoUI(aKCurrentAmmo, aKMaxAmmo);
+
         }
         // check if weapon is equiped
         if (hotKey3 == true)
         {
             isReloading = false;
             sniperCurrentAmmo = sniperMaxAmmo;
+            UpdateAmmoUI(sniperCurrentAmmo, sniperMaxAmmo);
         }
         // check if weapon is equiped
         if (hotKey4 == true)
         {
             isReloading = false;
             gumGunCurrentAmmo = gumGunMaxAmmo;
+            UpdateAmmoUI(gumGunCurrentAmmo, gumGunMaxAmmo);
         }
         // check if weapon is equiped
         if (hotKey5 == true)
         {
             isReloading = false;
             epicGunCurrentAmmo = epicGunMaxAmmo;
+            UpdateAmmoUI(epicGunCurrentAmmo, epicGunMaxAmmo);
         }
         // check if weapon is equiped
         if (hotKey6 == true)
         {
             isReloading = false;
             grenadeCurrentAmmo = grenadeMaxAmmo;
+            UpdateAmmoUI(grenadeCurrentAmmo, grenadeMaxAmmo);
         }
+    }
+
+    public void UpdateAmmoUI(int currentAmmo,  int maxAmmo)
+    {
+        canvas.GetComponent<TextMeshProUGUI>().text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
     }
 }

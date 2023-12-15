@@ -3219,6 +3219,7 @@ MonoBehaviour:
   bullet: {fileID: 3950419178529264420, guid: cc341c2a63e40fa42b9ff4823cf4590f, type: 3}
   Pistol: {fileID: 6543793955367365030}
   bulletSpawnPoint: {fileID: 5256225468850514194}
+  canvas: {fileID: 0}
   fireSpeed: 250
   timer: 0
   canFire: 0.2
