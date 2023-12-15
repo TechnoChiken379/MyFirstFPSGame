@@ -18,7 +18,7 @@ public class enemyAttacked : MonoBehaviour
 
     public GameObject enemyBullet;
     public Transform bulletSpawnPoint;
-    private float fireSpeed = 100;
+    private float fireSpeed = 80;
     private float fireRange = 18;
 
     private float timer = 0f;
@@ -70,7 +70,7 @@ public class enemyAttacked : MonoBehaviour
             Vector3 directionToPlayer = (player.position - bulletSpawnPoint.position).normalized;
             spawnedBullet.GetComponent<Rigidbody>().velocity = directionToPlayer * fireSpeed;
 
-            Destroy(spawnedBullet, 2);
+            Destroy(spawnedBullet, 1.5f);
             timer = 0f;
         }
     }

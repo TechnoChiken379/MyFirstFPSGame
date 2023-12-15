@@ -147,6 +147,11 @@ public class newShooting : MonoBehaviour
 
         // Manage hotkeys and fire bullets
 
+        if (Input.GetMouseButton(1))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         FireBullet();
         HotKeyManagment();
     }

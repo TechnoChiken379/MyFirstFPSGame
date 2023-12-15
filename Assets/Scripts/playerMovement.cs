@@ -79,6 +79,11 @@ public class playerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         // Getting input for movement along Z and X axes
         float MoveZ = Input.GetAxis("Vertical"); // Input for MoveDirection along Axis Z
         float MoveX = Input.GetAxis("Horizontal"); // Input for MoveDirection along Axis X

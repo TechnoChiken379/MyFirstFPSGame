@@ -45,7 +45,7 @@ public class DialogBox : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.RightAlt))
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
